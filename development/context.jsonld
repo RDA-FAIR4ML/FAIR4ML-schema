@@ -45,7 +45,21 @@
           "developmentStatus": {"@id": "codemeta:developmentStatus"},
           "issueTracker": {"@id": "codemeta:issueTracker"},
           "readme": {"@id": "codemeta:readme"},
-          "referencePublication": {"@id": "codemeta:referencePublication"} 
+          "referencePublication": {"@id": "codemeta:referencePublication"},
+
+          "ethicalLegalSocial": {"@id": "fair4ml:ethicalLegalSocial"},
+          "evaluatedOn": {"@id": "fair4ml:evaluatedOn"},
+          "fineTunedFrom": {"@id": "fair4ml:fineTunedFrom"},
+          "intendedUse": {"@id": "fair4ml:intendedUse"},
+          "mlTask": {"@id": "fair4ml:mlTask"},
+          "modelCategory": {"@id": "fair4ml:modelCategory"},
+          "modelRisks": {"@id": "fair4ml:modelRisks"},
+          "sharedBy": {"@id": "fair4ml:sharedBy"},
+          "testedOn": {"@id": "fair4ml:testedOn"},
+          "trainedOn": {"@id": "fair4ml:trainedOn"},
+          "usageInstructions": {"@id": "fair4ml:usageInstructions"},
+          "validatedOn": {"@id": "fair4ml:validatedOn"}
+          
      },
      "@graph": [
           {
