@@ -1,7 +1,7 @@
 # FAIR4ML-schema
 [![Project Status: WIP – Initial development is in progress, but there has not yet been a stable, usable release suitable for the public.](https://www.repostatus.org/badges/latest/wip.svg)](https://www.repostatus.org/#wip)
 
-FAIR4ML metadata schema for machine learning models
+FAIR4ML metadata schema for machine learning models. Source discussion document: https://docs.google.com/spreadsheets/d/1WBvTXedKCKMTKc5ZGq4vonZPeSAq-JB28Nhdu1w3Rj8/edit#gid=0 (open for discussions)
 
 The URI of the vocabulary is https://w3id.org/fair4ml
 
