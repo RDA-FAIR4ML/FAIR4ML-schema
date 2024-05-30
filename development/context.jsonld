@@ -103,7 +103,7 @@
           {
                "@id": "fair4ml:fineTunedFrom",
                "@type": "rdf:Property",
-               "rdfs:comment": "Relationship to point to the source model used for fine tuning (if this model was finetuned from another one).",
+               "rdfs:comment": "Relationship to point to the source model used for fine tuning (if this model was fine-tuned from another one).",
                "rdfs:label": "fine-tuned from",
                "schema:domainIncludes": {
                     "@id": "fair4ml:MLModel"
