@@ -113,6 +113,18 @@
                }
           },
           {
+               "@id": "fair4ml:hasCO2eEmissions",
+               "@type": "rdf:Property",
+               "rdfs:comment": "Amount of CO2 equivalent emissions produced by the model. The unit should be included in the field (e.g., 10 tonnes).",
+               "rdfs:label": "has CO2e emissions",
+               "schema:domainIncludes": {
+                    "@id": "fair4ml:MLModel"
+               },
+               "schema:rangeIncludes": {
+                    "@id": "schema:Text"
+               }
+          },
+          {
                "@id": "fair4ml:intendedUse",
                "@type": "rdf:Property",
                "rdfs:comment": "Purpose and intended use stated to enable users to make a decision as to the suitability of this creative work (e.g., lab protocol, machine learning model, software) to their experimental problem or own use case.",
