@@ -103,13 +103,25 @@
           {
                "@id": "fair4ml:fineTunedFrom",
                "@type": "rdf:Property",
-               "rdfs:comment": "Relationship to point to the source model used for fine tuning (if this model was finetuned from another one).",
+               "rdfs:comment": "Relationship to point to the source model used for fine tuning (if this model was fine-tuned from another one).",
                "rdfs:label": "fine-tuned from",
                "schema:domainIncludes": {
                     "@id": "fair4ml:MLModel"
                },
                "schema:rangeIncludes": {
                     "@id": "fair4ml:MLModel"
+               }
+          },
+          {
+               "@id": "fair4ml:hasCO2eEmissions",
+               "@type": "rdf:Property",
+               "rdfs:comment": "Amount of CO2 equivalent emissions produced by the model. The unit should be included in the field (e.g., 10 tonnes).",
+               "rdfs:label": "has CO2e emissions",
+               "schema:domainIncludes": {
+                    "@id": "fair4ml:MLModel"
+               },
+               "schema:rangeIncludes": {
+                    "@id": "schema:Text"
                }
           },
           {
