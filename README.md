@@ -11,7 +11,7 @@ To obtain the JSON-LD representation of the FAIR4ML vocabulary just type:
 curl -sH "Accept:application/ld+json" -L https://w3id.org/fair4ml 
 ```
 
-The FAIR4ML metadata schema descriptions can be seen in the table below. You can leave your comments in this [Google Sheet](https://docs.google.com/spreadsheets/d/1J2Q7M7p_JO0lYkQQ-QtCJyi_DNe3gR4Aqk7BynK5jj4/edit#gid=1095504034):
+The FAIR4ML metadata schema descriptions can be seen in the table below. You can leave your comments in this [Google Sheet](https://docs.google.com/spreadsheets/d/1J2Q7M7p_JO0lYkQQ-QtCJyi_DNe3gR4Aqk7BynK5jj4/edit#gid=1095504034).
 
 
 
