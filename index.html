@@ -25,10 +25,6 @@
 <body>
     <div class="container min-vh-100">
         <main id="main" class="my-5">
-
-
-
-
             <h1>FAIR4ML <u></u> Profile</h1>
 
             <h3><strong>Version:</strong> 0.0.1 (2024.06.04.)</h3>
@@ -45,13 +41,13 @@
                     <br />
                     <br />
 
-                    <hr/>
+                    <hr />
                     <a href="http://schema.org/Thing">Thing</a>
                     &gt;
                     <a href="http://schema.org/CreativeWork">CreativeWork</a>
                     &gt;
                     <a href="https://github.com/RDA-FAIR4ML/FAIR4ML-schema">MLModel</a>
-                    <hr/>
+                    <hr />
 
 
                     <h3>Description</h3>
@@ -59,183 +55,226 @@
                     <p>In this document we propose a simple way for MLModel to self-describe their genetic variant
                         cardinality service for better integration. </p>
 
-
-
-
-
                 </div>
-                <hr/>
+                <hr />
                 <div>
                     <h3>Contributors</h3>
                     <p>The following people have been involved in the creation of this specification document.
 
                     <h5 class="my-4">Group Leader(s)</h5>
-                        <div class="col mt-2">Daniel Garijo</div>
-                        <div class="col mt-2">Leyla Jael Castro</div>
+                    <div class="col mt-2">Daniel Garijo</div>
+                    <div class="col mt-2">Leyla Jael Castro</div>
 
                     <h5 class="my-4">Other team members</h5>
-                        <div class="col mt-2">Jenifer Tabita Ciuciu-Kiss</div>
-                        <div class="col mt-2">Solanki Dhwani</div>
+                    <div class="col mt-2">Jenifer Tabita Ciuciu-Kiss</div>
+                    <div class="col mt-2">Solanki Dhwani</div>
 
                 </div>
-                <hr/>
+                <hr />
 
                 <p>CD = Cardinality</p>
 
-
-                
-    <div class="table-responsive shadow rounded mt-4 mb-5">
-        <table class="table table-hover table-borderless mb-0 spec-prof-table">
-            <thead>
-                <tr>
-                    <th>Property</th>
-                    <th>Expected Type</th>
-                    <th>Description</th>
-                    <th>CD</th>
-                    <th class="control-vocabulary-column">Controlled Vocabulary</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr class="cardinality">
-                    <td colspan="6">
-                        Marginality: <b>Minimum.</b>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="property-column"><a href="https://www.w3.org/TR/json-ld/#dfn-context"
-                            target="_blank" class="external" rel="noopener">@context</a></td>
-                    <td><a href="http://schema.org/URL" target="_blank" rel="noopener">URL</a></td>
-                    <td class="description-column">Used to provide the context (namespaces) for the JSON-LD
-                        file. <br />Not needed in other serialisations.</td>
-                    <td>ONE</td>
-                    <td class="control-vocabulary-column"></td>
-    </div>
-    <tr>
-        <td class="property-column"><a href="https://www.w3.org/TR/json-ld/#specifying-the-type"
-                target="_blank" class="external" rel="noopener">@type</a></td>
-        <td><a href="http://schema.org/Text" target="_blank" rel="noopener">Text</a></td>
-        <td class="description-column">Schema.orgclass for the resource declared using JSON-LD
-            syntax. For other serialisations please use the appropriate mechanism.<br />While it is
-            permissible to provide multiple types, it is preferred to use a single type.</td>
-        <td>MANY</td>
-        <td class="control-vocabulary-column">Schema.org</td>
-    </tr>
-    <tr>
-        <td class="property-column"><a href="https://www.w3.org/TR/json-ld/#node-identifiers" target="_blank"
-                class="external" rel="noopener">@id</a></td>
-        <td><a href="https://datatracker.ietf.org/doc/html/rfc3987#section-2" target="_blank" class="external"
-                rel="noopener">IRI</a></td>
-        <td class="description-column">Used to distinguish the resource being described in JSON-LD. For other
-            serialisations use the appropriate approach.</td>
-        <td>ONE</td>
-        <td class="control-vocabulary-column"></td>
-    </tr>
-    <tr>
-        <td class="property-column">ethicalLegalSocial</td>
-        <td><a href="https://schema.org/Text" target="_blank" class="external" rel="noopener">Text</a></td>
-        <td class="description-column">Considerations with respect to ethical, legal and social aspects.</td>
-        <td>ONE</td>
-        <td class="control-vocabulary-column">FAIR4ML Context</td>
-    </tr>
-
-
-    <tr>
-        <td class="property-column">evaluatedOn</td>
-        <td><a href="https://schema.org/Dataset" target="_blank" class="external" rel="noopener">Dataset</a></td>
-        <td class="description-column">Dataset used for evaluating the model. The dataset used for evaluation may not have been part of the train/test/validation (e.g., a benchmark, extrinsic validation).</td>
-        <td>ONE</td>
-        <td class="control-vocabulary-column">FAIR4ML Context</td>
-    </tr>
-    <tr>
-        <td class="property-column">fineTunedFrom</td>
-        <td><a href="https://w3id.org/fair4ml/MLModel" target="_blank" class="external" rel="noopener">MLModel</a></td>
-        <td class="description-column">Relationship to point to the source model used for fine tuning (if this model was fine-tuned from another one).</td>
-        <td>ONE</td>
-        <td class="control-vocabulary-column">FAIR4ML Context</td>
-    </tr>
-    <tr>
-        <td class="property-column">hasCO2eEmissions</td>
-        <td><a href="https://schema.org/Text" target="_blank" class="external" rel="noopener">Text</a></td>
-        <td class="description-column">Amount of CO2 equivalent emissions produced by the model. The unit should be included in the field (e.g., 10 tonnes).</td>
-        <td>ONE</td>
-        <td class="control-vocabulary-column">FAIR4ML Context</td>
-    </tr>
-    <tr>
-        <td class="property-column">intendedUse</td>
-        <td><a href="https://schema.org/Text" target="_blank" class="external" rel="noopener">Text</a>
-            <a href="https://schema.org/DefinedTerm" target="_blank" class="external" rel="noopener">DefinedTerm</a>
-            <a href="https://schema.org/URL" target="_blank" class="external" rel="noopener">URL</a></td>
-        <td class="description-column">Purpose and intended use stated to enable users to make a decision as to the suitability of this creative work (e.g., lab protocol, machine learning model, software) to their experimental problem or own use case.</td>
-        <td>ONE</td>
-        <td class="control-vocabulary-column">FAIR4ML Context</td>
-    </tr>
-    <tr>
-        <td class="property-column">mlTask</td>
-        <td><a href="https://schema.org/Text" target="_blank" class="external" rel="noopener">Text</a>
-            <a href="https://schema.org/DefinedTerm" target="_blank" class="external" rel="noopener">DefinedTerm</a></td>
-        <td class="description-column">ML task addressed by this ML software or model (e.g., binary classification).</td>
-        <td>ONE</td>
-        <td class="control-vocabulary-column">FAIR4ML Context</td>
-    </tr>
-    <tr>
-        <td class="property-column">modelCategory</td>
-        <td><a href="https://schema.org/Text" target="_blank" class="external" rel="noopener">Text</a>
-            <a href="https://schema.org/DefinedTerm" target="_blank" class="external" rel="noopener">DefinedTerm</a></td>
-        <td class="description-column">Category of this ML model (e.g., Supervised, Unsupervised, Semi-supervised, Reinforcement), learning architecture (e.g., CNN), underlying algorithm (e.g., logistic regression, random forest).</td>
-        <td>ONE</td>
-        <td class="control-vocabulary-column">FAIR4ML Context</td>
-    </tr>
-    <tr>
-        <td class="property-column">modelRisks</td>
-        <td><a href="https://schema.org/Text" target="_blank" class="external" rel="noopener">Text</a></td>
-        <td class="description-column">Description of the risks and biases of the model, in a human-readable manner.</td>
-        <td>ONE</td>
-        <td class="control-vocabulary-column">FAIR4ML Context</td>
-    </tr>
-    <tr>
-        <td class="property-column">sharedBy</td>
-        <td><a href="https://schema.org/Person" target="_blank" class="external" rel="noopener">Person</a>
-            <a href="https://schema.org/Organization" target="_blank" class="external" rel="noopener">Organization</a></td>
-        <td class="description-column">Person or Organization who shared the model online (e.g., uploading it to HuggingFace).</td>
-        <td>ONE</td>
-        <td class="control-vocabulary-column">FAIR4ML Context</td>
-    </tr>
-    <tr>
-        <td class="property-column">testedOn</td>
-        <td><a href="https://schema.org/Dataset" target="_blank" class="external" rel="noopener">Dataset</a></td>
-        <td class="description-column">Link to the dataset used to test the model (following train/test/validation splits).</td>
-        <td>ONE</td>
-        <td class="control-vocabulary-column">FAIR4ML Context</td>
-    </tr>
-    <tr>
-        <td class="property-column">trainedOn</td>
-        <td><a href="https://schema.org/Dataset" target="_blank" class="external" rel="noopener">Dataset</a></td>
-        <td class="description-column">AI-ready dataset (after pre-processing) used for the training and optimization of this ML model.</td>
-        <td>ONE</td>
-        <td class="control-vocabulary-column">FAIR4ML Context</td>
-    </tr>
-    <tr>
-        <td class="property-column">usageInstructions</td>
-        <td><a href="https://schema.org/Text" target="_blank" class="external" rel="noopener">Text</a></td>
-        <td class="description-column">Description of the instructions needed to run the model (e.g., to do inference on a task). Code snippets may be used for illustration.</td>
-        <td>ONE</td>
-        <td class="control-vocabulary-column">FAIR4ML Context</td>
-    </tr>
-    <tr>
-        <td class="property-column">validatedOn</td>
-        <td><a href="https://schema.org/Dataset" target="_blank" class="external" rel="noopener">Dataset</a></td>
-        <td class="description-column">Link to the dataset used to validate the model. Typically the training dataset is a separated set from the train/testing set.</td>
-        <td>ONE</td>
-        <td class="control-vocabulary-column">FAIR4ML Context</td>
-    </tr>
-
-    </tbody>
-    </table>
-    </div>
-
-
-
-    </main>
+                <div class="table-responsive shadow rounded mt-4 mb-5">
+                    <table class="table table-hover table-borderless mb-0 spec-prof-table">
+                        <thead>
+                            <tr>
+                                <th>Property</th>
+                                <th>Expected Type</th>
+                                <th>Description</th>
+                                <th>CD</th>
+                                <th class="control-vocabulary-column">Controlled Vocabulary</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="property-column"><a href="https://www.w3.org/TR/json-ld/#dfn-context"
+                                        target="_blank" class="external" rel="noopener">@context</a></td>
+                                <td><a href="http://schema.org/URL" target="_blank" rel="noopener">URL</a></td>
+                                <td class="description-column">Used to provide the context (namespaces) for the JSON-LD
+                                    file. <br />Not needed in other serialisations.</td>
+                                <td>ONE</td>
+                                <td class="control-vocabulary-column"></td>
+                            <tr>
+                                <td class="property-column"><a href="https://www.w3.org/TR/json-ld/#specifying-the-type"
+                                        target="_blank" class="external" rel="noopener">@type</a></td>
+                                <td><a href="http://schema.org/Text" target="_blank" rel="noopener">Text</a></td>
+                                <td class="description-column">Schema.orgclass for the resource declared using JSON-LD
+                                    syntax. For other serialisations please use the appropriate mechanism.<br />While it
+                                    is
+                                    permissible to provide multiple types, it is preferred to use a single type.</td>
+                                <td>MANY</td>
+                                <td class="control-vocabulary-column">Schema.org</td>
+                            </tr>
+                            <tr>
+                                <td class="property-column"><a href="https://www.w3.org/TR/json-ld/#node-identifiers"
+                                        target="_blank" class="external" rel="noopener">@id</a></td>
+                                <td><a href="https://datatracker.ietf.org/doc/html/rfc3987#section-2" target="_blank"
+                                        class="external" rel="noopener">IRI</a></td>
+                                <td class="description-column">Used to distinguish the resource being described in
+                                    JSON-LD. For
+                                    other
+                                    serialisations use the appropriate approach.</td>
+                                <td>ONE</td>
+                                <td class="control-vocabulary-column"></td>
+                            </tr>
+                            <tr>
+                                <td class="property-column">ethicalLegalSocial</td>
+                                <td><a href="https://schema.org/Text" target="_blank" class="external"
+                                        rel="noopener">Text</a></td>
+                                <td class="description-column">Considerations with respect to ethical, legal and social
+                                    aspects.
+                                </td>
+                                <td>ONE</td>
+                                <td class="control-vocabulary-column">FAIR4ML Context</td>
+                            </tr>
+                            <tr>
+                                <td class="property-column">evaluatedOn</td>
+                                <td><a href="https://schema.org/Dataset" target="_blank" class="external"
+                                        rel="noopener">Dataset</a>
+                                </td>
+                                <td class="description-column">Dataset used for evaluating the model. The dataset used
+                                    for
+                                    evaluation may not have been part of the train/test/validation (e.g., a benchmark,
+                                    extrinsic
+                                    validation).</td>
+                                <td>ONE</td>
+                                <td class="control-vocabulary-column">FAIR4ML Context</td>
+                            </tr>
+                            <tr>
+                                <td class="property-column">fineTunedFrom</td>
+                                <td><a href="https://w3id.org/fair4ml/MLModel" target="_blank" class="external"
+                                        rel="noopener">MLModel</a></td>
+                                <td class="description-column">Relationship to point to the source model used for fine
+                                    tuning (if
+                                    this model was fine-tuned from another one).</td>
+                                <td>ONE</td>
+                                <td class="control-vocabulary-column">FAIR4ML Context</td>
+                            </tr>
+                            <tr>
+                                <td class="property-column">hasCO2eEmissions</td>
+                                <td><a href="https://schema.org/Text" target="_blank" class="external"
+                                        rel="noopener">Text</a></td>
+                                <td class="description-column">Amount of CO2 equivalent emissions produced by the model.
+                                    The unit
+                                    should be included in the field (e.g., 10 tonnes).</td>
+                                <td>ONE</td>
+                                <td class="control-vocabulary-column">FAIR4ML Context</td>
+                            </tr>
+                            <tr>
+                                <td class="property-column">intendedUse</td>
+                                <td><a href="https://schema.org/Text" target="_blank" class="external"
+                                        rel="noopener">Text</a>
+                                    <a href="https://schema.org/DefinedTerm" target="_blank" class="external"
+                                        rel="noopener">DefinedTerm</a>
+                                    <a href="https://schema.org/URL" target="_blank" class="external"
+                                        rel="noopener">URL</a>
+                                </td>
+                                <td class="description-column">Purpose and intended use stated to enable users to make a
+                                    decision as
+                                    to the suitability of this creative work (e.g., lab protocol, machine learning
+                                    model, software)
+                                    to their experimental problem or own use case.</td>
+                                <td>ONE</td>
+                                <td class="control-vocabulary-column">FAIR4ML Context</td>
+                            </tr>
+                            <tr>
+                                <td class="property-column">mlTask</td>
+                                <td><a href="https://schema.org/Text" target="_blank" class="external"
+                                        rel="noopener">Text</a>
+                                    <a href="https://schema.org/DefinedTerm" target="_blank" class="external"
+                                        rel="noopener">DefinedTerm</a>
+                                </td>
+                                <td class="description-column">ML task addressed by this ML software or model (e.g.,
+                                    binary
+                                    classification).</td>
+                                <td>ONE</td>
+                                <td class="control-vocabulary-column">FAIR4ML Context</td>
+                            </tr>
+                            <tr>
+                                <td class="property-column">modelCategory</td>
+                                <td><a href="https://schema.org/Text" target="_blank" class="external"
+                                        rel="noopener">Text</a>
+                                    <a href="https://schema.org/DefinedTerm" target="_blank" class="external"
+                                        rel="noopener">DefinedTerm</a>
+                                </td>
+                                <td class="description-column">Category of this ML model (e.g., Supervised,
+                                    Unsupervised,
+                                    Semi-supervised, Reinforcement), learning architecture (e.g., CNN), underlying
+                                    algorithm (e.g.,
+                                    logistic regression, random forest).</td>
+                                <td>ONE</td>
+                                <td class="control-vocabulary-column">FAIR4ML Context</td>
+                            </tr>
+                            <tr>
+                                <td class="property-column">modelRisks</td>
+                                <td><a href="https://schema.org/Text" target="_blank" class="external"
+                                        rel="noopener">Text</a></td>
+                                <td class="description-column">Description of the risks and biases of the model, in a
+                                    human-readable
+                                    manner.</td>
+                                <td>ONE</td>
+                                <td class="control-vocabulary-column">FAIR4ML Context</td>
+                            </tr>
+                            <tr>
+                                <td class="property-column">sharedBy</td>
+                                <td><a href="https://schema.org/Person" target="_blank" class="external"
+                                        rel="noopener">Person</a>
+                                    <a href="https://schema.org/Organization" target="_blank" class="external"
+                                        rel="noopener">Organization</a>
+                                </td>
+                                <td class="description-column">Person or Organization who shared the model online (e.g.,
+                                    uploading
+                                    it to HuggingFace).</td>
+                                <td>ONE</td>
+                                <td class="control-vocabulary-column">FAIR4ML Context</td>
+                            </tr>
+                            <tr>
+                                <td class="property-column">testedOn</td>
+                                <td><a href="https://schema.org/Dataset" target="_blank" class="external"
+                                        rel="noopener">Dataset</a>
+                                </td>
+                                <td class="description-column">Link to the dataset used to test the model (following
+                                    train/test/validation splits).</td>
+                                <td>ONE</td>
+                                <td class="control-vocabulary-column">FAIR4ML Context</td>
+                            </tr>
+                            <tr>
+                                <td class="property-column">trainedOn</td>
+                                <td><a href="https://schema.org/Dataset" target="_blank" class="external"
+                                        rel="noopener">Dataset</a>
+                                </td>
+                                <td class="description-column">AI-ready dataset (after pre-processing) used for the
+                                    training and
+                                    optimization of this ML model.</td>
+                                <td>ONE</td>
+                                <td class="control-vocabulary-column">FAIR4ML Context</td>
+                            </tr>
+                            <tr>
+                                <td class="property-column">usageInstructions</td>
+                                <td><a href="https://schema.org/Text" target="_blank" class="external"
+                                        rel="noopener">Text</a></td>
+                                <td class="description-column">Description of the instructions needed to run the model
+                                    (e.g., to do
+                                    inference on a task). Code snippets may be used for illustration.</td>
+                                <td>ONE</td>
+                                <td class="control-vocabulary-column">FAIR4ML Context</td>
+                            </tr>
+                            <tr>
+                                <td class="property-column">validatedOn</td>
+                                <td><a href="https://schema.org/Dataset" target="_blank" class="external"
+                                        rel="noopener">Dataset</a>
+                                </td>
+                                <td class="description-column">Link to the dataset used to validate the model. Typically
+                                    the
+                                    training dataset is a separated set from the train/testing set.</td>
+                                <td>ONE</td>
+                                <td class="control-vocabulary-column">FAIR4ML Context</td>
+                            </tr>
+                        </tbody>    
+                    </table>
+                </div>
+            </div>
+        </main>
     </div>
 
 
