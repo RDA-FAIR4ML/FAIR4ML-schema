@@ -17,7 +17,6 @@
     <link href='https://fonts.googleapis.com/css?family=Noto+Sans' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-
     <!-- JavaScript  -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
@@ -32,10 +31,15 @@
             <br />
             <p>If you spot any errors or omissions with this type, please file an issue in our <a
                     href="https://github.com/RDA-FAIR4ML/FAIR4ML-schema" target="_blank">GitHub</a>.</p>
-            <br />
             <div class="tab-content py-3 mb-3 border-bottom" id="nav-tabContent">
-                <div class="tab-pane fade show active" id="nav-description" role="tabpanel"
-                    aria-labelledby="nav-description-tab">
+
+
+                <div class="tab-pane fade show active" id="nav-description" role="tabpanel" aria-labelledby="nav-description-tab">
+                    <h3>Description</h3>
+
+                    <p>In this document we propose a simple way for <b>MLModel</b> to self-describe their genetic variant cardinality service for better integration. </p>
+
+
                     <h3>Schema.org hierarchy</h3>
                     This Profile fits into the schema.org hierarchy as follows:
                     <br />
@@ -50,25 +54,6 @@
                     <hr />
 
 
-                    <h3>Description</h3>
-
-                    <p>In this document we propose a simple way for MLModel to self-describe their genetic variant
-                        cardinality service for better integration. </p>
-
-                </div>
-                <hr />
-                <div>
-                    <h3>Contributors</h3>
-                    <p>The following people have been involved in the creation of this specification document.
-
-                    <h5 class="my-4">Group Leader(s)</h5>
-                    <div class="col mt-2">Daniel Garijo</div>
-                    <div class="col mt-2">Leyla Jael Castro</div>
-
-                    <h5 class="my-4">Other team members</h5>
-                    <div class="col mt-2">Jenifer Tabita Ciuciu-Kiss</div>
-                    <div class="col mt-2">Solanki Dhwani</div>
-
                 </div>
 
                 <div class="table-responsive shadow rounded mt-4 mb-5">
@@ -82,13 +67,7 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <td colspan="3"><hr class="separator"/></td>
-                            </tr>
-                            <tr>
                                 <td colspan="3" class="spacer">Keywords</td>
-                            </tr>
-                            <tr>
-                                <td colspan="3"><hr class="separator"/></td>
                             </tr>
                             <tr>
                                 <td class="property-column"><a href="https://www.w3.org/TR/json-ld/#dfn-context"
@@ -114,93 +93,13 @@
                                     Used to distinguish the resource being described in JSON-LD. For other serialisations use the appropriate approach.
                                 </td>
                             </tr>
-
-                            <tr>
-                                <td colspan="3"><hr class="separator"/></td>
-                            </tr>
-                            <tr>
-                                <td colspan="3" class="spacer">Namespaces</td>
-                            </tr>
-                            <tr>
-                                <td colspan="3"><hr class="separator"/></td>
-                            </tr>
-
-
-                            <tr>
-                                <td class="property-column">
-                                    <a href="http://www.w3.org/1999/02/22-rdf-syntax-ns#" target="_blank" class="external" rel="noopener">rdf</a>
-                                </td>
-                                <td></td>
-                                <td class="description-column">
-                                    This is the RDF Schema for the RDF vocabulary terms in the RDF Namespace, defined in RDF 1.1 Concepts.
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="property-column">
-                                    <a href="http://www.w3.org/2000/01/rdf-schema#" target="_blank" class="external" rel="noopener">rdfs</a>
-                                </td>
-                                <td></td>
-                                <td class="description-column">
-                                    The RDF Schema vocabulary (RDFS).
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="property-column">
-                                    <a href="http://www.w3.org/2002/07/owl#" target="_blank" class="external" rel="noopener">owl</a>
-                                </td>
-                                <td></td>
-                                <td class="description-column">
-                                    This ontology partially describes the built-in classes and properties that together form the basis of the RDF/XML syntax of OWL 2. The content of this ontology is based on Tables 6.1 and 6.2 in Section 6.4 of the OWL 2 RDF-Based Semantics specification, available at http://www.w3.org/TR/owl2-rdf-based-semantics/. Please note that those tables do not include the different annotations (labels, comments and rdfs:isDefinedBy links) used in this file. Also note that the descriptions provided in this ontology do not provide a complete and correct formal description of either the syntax or the semantics of the introduced terms (please see the OWL 2 recommendations for the complete and normative specifications). Furthermore, the information provided by this ontology may be misleading if not used with care. This ontology SHOULD NOT be imported into OWL ontologies. Importing this file into an OWL 2 DL ontology will cause it to become an OWL 2 Full ontology and may have other, unexpected, consequences.
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="property-column">
-                                    <a href="http://schema.org/" target="_blank" class="external" rel="noopener">schema</a>
-                                </td>
-                                <td></td>
-                                <td class="description-column">
-                                    Schema.org is a collaborative, community activity with a mission to create, maintain, and promote schemas for structured data on the Internet, on web pages, in email messages, and beyond.
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="property-column">
-                                    <a href="https://w3id.org/codemeta/" target="_blank" class="external" rel="noopener">codemeta</a>
-                                </td>
-                                <td></td>
-                                <td class="description-column">
-                                    Codemeta is a minimal metadata schema for science software and code, in JSON and XML.
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="property-column">
-                                    <a href="https://w3id.org/fair4ml/" target="_blank" class="external" rel="noopener">fair4ml</a>
-                                </td>
-                                <td></td>
-                                <td class="description-column">
-                                    FAIR4ML metadata schema for machine learning models.
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="property-column">
-                                    <a href="http://mlcommons.org/croissant/1.0" target="_blank" class="external" rel="noopener">cr</a>
-                                </td>
-                                <td></td>
-                                <td class="description-column">
-                                    Datasets are the basis of machine learning (ML). However, a lack of standardization in the description and semantics of ML datasets has made it increasingly difficult for researchers and practitioners to explore, understand, and use all but a small fraction of popular datasets.
-                                </td>
-                            </tr>
-                            
-                            
                             
                             <tr>
                                 <td colspan="3"><hr class="separator"/></td>
                             </tr>
                             <tr>
-                                <td colspan="3" class="spacer">FAIR4ML Properties</td>
+                                <td colspan="3" class="spacer"><b>FAIR4ML Properties</b></td>
                             </tr>
-                            <tr>
-                                <td colspan="3"><hr class="separator"/></td>
-                            </tr> 
 
                             <tr>
                                 <td class="property-column">fair4ml:ethicalLegalSocial</td>
@@ -337,39 +236,46 @@
                                     Link to the dataset used to validate the model. Typically the training dataset is a separated set from the train/testing set.
                                 </td>
                             </tr>
+                        </tbody>    
+                    </table>
+                </div>
 
+                <div class="table-responsive shadow rounded mt-4 mb-5">
+                    <table class="table table-hover table-borderless mb-0 spec-prof-table">
+                        <thead>
                             <tr>
-                                <td colspan="3"><hr class="separator"/></td>
+                                <th>Property</th>
+                                <th>Expected Type</th>
+                                <th>Description</th>
                             </tr>
+                        </thead>
+                        <tbody>
                             <tr>
                                 <td colspan="3" class="spacer">Schema.org Profiles</td>
                             </tr>
-                            <tr>
-                                <td colspan="3"><hr class="separator"/></td>
-                            </tr> 
 
                             <tr>
-                                <td class="property-column">schema:CreativeWork</td>
+                                <td class="property-column"><a href="http://schema.org/CreativeWork" target="_blank" class="external" rel="noopener">schema:CreativeWork</a></td>
                                 <td><a href="http://schema.org/CreativeWork" target="_blank" class="external" rel="noopener">schema:CreativeWork</a></td>
                                 <td class="description-column">
                                     The most generic kind of creative work, including books, movies, photographs, software programs, etc.
                             </tr>
                             <tr>
-                                <td class="property-column">schema:MediaObject</td>
+                                <td class="property-column"><a href="http://schema.org/MediaObject" target="_blank" class="external" rel="noopener">schema:MediaObject</a></td>
                                 <td><a href="http://schema.org/MediaObject" target="_blank" class="external" rel="noopener">schema:MediaObject</a></td>
                                 <td class="description-column">
                                     A media object, such as an image, video, audio, or text object embedded in a web page or a downloadable dataset i.e. DataDownload. Note that a creative work may have many media objects associated with it on the same web page. For example, a page about a single song (MusicRecording) may have a music video (VideoObject), and a high and low bandwidth audio stream (2 AudioObject's).
                                 </td>
                             </tr>
                             <tr>
-                                <td class="property-column">schema:ScholarlyArticle</td>
+                                <td class="property-column"><a href="http://schema.org/ScholarlyArticle" target="_blank" class="external" rel="noopener">schema:ScholarlyArticle</a></td>
                                 <td><a href="http://schema.org/ScholarlyArticle" target="_blank" class="external" rel="noopener">schema:ScholarlyArticle</a></td>
                                 <td class="description-column">
                                     A scholarly article.
                                 </td>
                             </tr>
                             <tr>
-                                <td class="property-column">schema:Thing</td>
+                                <td class="property-column"><a href="http://schema.org/Thing" target="_blank" class="external" rel="noopener">schema:Thing</a></td>
                                 <td><a href="http://schema.org/Thing" target="_blank" class="external" rel="noopener">schema:Thing</a></td>
                                 <td class="description-column">
                                     The most generic type of item.
@@ -382,9 +288,7 @@
                             <tr>
                                 <td colspan="3" class="spacer">Schema.org Properties</td>
                             </tr>
-                            <tr>
-                                <td colspan="3"><hr class="separator"/></td>
-                            </tr> 
+                            </tr>
 
                             <tr>
                                 <td class="property-column">
@@ -785,10 +689,6 @@
                             <tr>
                                 <td colspan="3" class="spacer">Codemeta Properties</td>
                             </tr>
-                            <tr>
-                                <td colspan="3"><hr class="separator"/></td>
-                            </tr> 
-
 
                             <tr>
                                 <td class="property-column">
@@ -855,6 +755,34 @@
                         </tbody>    
                     </table>
                 </div>
+
+
+                <h3>Namespaces</h3>
+                <p>Below are the namespaces used in this document:</p>
+                <ul>
+                    <li><a href="http://www.w3.org/1999/02/22-rdf-syntax-ns#" target="_blank" class="external" rel="noopener">rdf</a>: This is the RDF Schema for the RDF vocabulary terms in the RDF Namespace, defined in RDF 1.1 Concepts.</li>
+                    <li><a href="http://www.w3.org/2000/01/rdf-schema#" target="_blank" class="external" rel="noopener">rdfs</a>: The RDF Schema vocabulary (RDFS).</li>
+                    <li><a href="http://www.w3.org/2002/07/owl#" target="_blank" class="external" rel="noopener">owl</a>: This ontology partially describes the built-in classes and properties that together form the basis of the RDF/XML syntax of OWL 2.</li>
+                    <li><a href="http://schema.org/" target="_blank" class="external" rel="noopener">schema</a>: Schema.org is a collaborative, community activity with a mission to create, maintain, and promote schemas for structured data on the Internet, on web pages, in email messages, and beyond.</li>
+                    <li><a href="https://w3id.org/codemeta/" target="_blank" class="external" rel="noopener">codemeta</a>: Codemeta is a minimal metadata schema for science software and code, in JSON and XML.</li>
+                    <li><a href="https://w3id.org/fair4ml/" target="_blank" class="external" rel="noopener">fair4ml</a>: FAIR4ML metadata schema for machine learning models.</li>
+                    <li><a href="http://mlcommons.org/croissant/1.0" target="_blank" class="external" rel="noopener">cr</a>: Datasets are the basis of machine learning (ML). However, a lack of standardization in the description and semantics of ML datasets has made it increasingly difficult for researchers and practitioners to explore, understand, and use all but a small fraction of popular datasets.</li>
+                </ul>
+
+            </div>
+
+            <div>
+                <h3>Contributors</h3>
+                <p>The following people have been involved in the creation of this specification document.
+
+                <h5 class="my-4">Group Leader(s)</h5>
+                <div class="col mt-2">Daniel Garijo</div>
+                <div class="col mt-2">Leyla Jael Castro</div>
+
+                <h5 class="my-4">Other team members</h5>
+                <div class="col mt-2">Jenifer Tabita Ciuciu-Kiss</div>
+                <div class="col mt-2">Solanki Dhwani</div>
+
             </div>
         </main>
     </div>
