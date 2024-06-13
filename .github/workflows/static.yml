@@ -55,7 +55,7 @@ jobs:
           if git commit --no-verify -m "docs: Regenerate index.html"; then
             # rebase and push in a retry loop
             for i in {1..5}; do
-              git pull --rebase && git push https://${{ secrets.TOKEN }}@github.com/${{ github.repository_owner }}/${{ github.repository }}.git && break || sleep 1
+              git pull --rebase && git push https://${{ secrets.TOKEN }}@github.com/${{ github.repository }}.git && break || sleep 1
             done
           fi
 
