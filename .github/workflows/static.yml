@@ -50,7 +50,7 @@ jobs:
           git config --local user.email 'github-actions[bot]@users.noreply.github.com'
           python3 src/generate_doc.py
           git add index.html
-          if git commit --no-verify -m "docs: Regenerate index.html"; then
+          git commit --no-verify -m "docs: Regenerate index.html"
       
       - name: Push new index.html to GitHub
         uses: stefanzweifel/git-auto-commit-action@v5
