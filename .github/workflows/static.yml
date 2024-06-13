@@ -31,15 +31,18 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+
       - name: Setup Pages
         uses: actions/configure-pages@v5
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
           # Upload entire repository
           path: '.'
-      - shell: bash
-      - run: |
+
+      - name: Generate documentation
+        run: |
           git config --global --add safe.directory '*'
           git config --local user.name 'github-actions[bot]'
           git config --local user.email 'github-actions[bot]@users.noreply.github.com'
@@ -51,6 +54,7 @@ jobs:
               git pull --rebase && git push && break || sleep 1
             done
           fi
+
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
