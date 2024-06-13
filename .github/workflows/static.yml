@@ -32,6 +32,15 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.10
+      
+      - name: Install python dependencies
+        run: |
+          if [ -f src/requirements.txt ]; then pip install -r src/requirements.txt; fi
+
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
@@ -42,18 +51,13 @@ jobs:
           path: '.'
 
       - name: Generate documentation
-        env:
-          GITHUB_TOKEN: ${{ secrets.TOKEN }}
         run: |
-          git config --global --add safe.directory '*'
-          git config --local user.name 'github-actions[bot]'
-          git config --local user.email 'github-actions[bot]@users.noreply.github.com'
-          python3 src/generate_doc.py
+          python src/generate_doc.py
+          git config user.name github-actions
+          git config user.email github-actions@github.com
           git add index.html
-          git commit --no-verify -m "docs: Regenerate index.html"
-      
-      - name: Push new index.html to GitHub
-        uses: stefanzweifel/git-auto-commit-action@v5
+          git commit -m "update index.html automatically"
+          git push
 
       - name: Deploy to GitHub Pages
         id: deployment
