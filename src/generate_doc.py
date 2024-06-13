@@ -59,7 +59,7 @@ def get_description(item, schemaorg_data, codemeta_data):
 
 def format_property(item, schemaorg_data, codemeta_data):
     property_name = item.get('@id', '')
-    if property_name.split(':')[-1].isupper():
+    if property_name.split(':')[-1][0].isupper():
         return
     property_url = ''
     if 'schema:' in item.get('@id', ''):
