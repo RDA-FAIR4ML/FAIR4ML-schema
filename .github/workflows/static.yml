@@ -38,6 +38,19 @@ jobs:
         with:
           # Upload entire repository
           path: '.'
+      - shell: bash
+      - run: |
+          git config --global --add safe.directory '*'
+          git config --local user.name 'github-actions[bot]'
+          git config --local user.email 'github-actions[bot]@users.noreply.github.com'
+          python3 src/generate_doc.py
+          git add index.html
+          if git commit --no-verify -m "docs: Regenerate index.html"; then
+            # rebase and push in a retry loop
+            for i in {1..5}; do
+              git pull --rebase && git push && break || sleep 1
+            done
+          fi
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
