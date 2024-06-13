@@ -50,14 +50,10 @@ jobs:
           git config --local user.email 'github-actions[bot]@users.noreply.github.com'
           python3 src/generate_doc.py
           git add index.html
-          echo ${{ github.repository_owner }}
-          echo ${{ github.repository }}
           if git commit --no-verify -m "docs: Regenerate index.html"; then
-            # rebase and push in a retry loop
-            for i in {1..5}; do
-              git pull --rebase && git push https://${{ secrets.TOKEN }}@github.com/${{ github.repository }}.git && break || sleep 1
-            done
-          fi
+      
+      - name: Push new index.html to GitHub
+        uses: stefanzweifel/git-auto-commit-action@v5
 
       - name: Deploy to GitHub Pages
         id: deployment
