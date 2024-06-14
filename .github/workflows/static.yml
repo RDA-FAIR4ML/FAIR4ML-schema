@@ -56,8 +56,12 @@ jobs:
           git config user.name github-actions
           git config user.email github-actions@github.com
           git add index.html
-          git commit -m "update index.html automatically"
-          git push
+          if git diff-index --quiet HEAD; then
+            echo "No changes to commit"
+          else
+            git commit -m "update index.html automatically"
+            git push
+          fi
 
       - name: Deploy to GitHub Pages
         id: deployment
