@@ -122,7 +122,7 @@
           {
                "@id": "fair4ml:hasCO2eEmissions",
                "@type": "rdf:Property",
-               "rdfs:comment": "Amount of CO2 equivalent emissions produced by the model. The unit should be included in the field (e.g., 10 tonnes).",
+               "rdfs:comment": "Amount of CO2 equivalent emissions produced by the model training. The unit should be included in the field (e.g., 10 tonnes).",
                "rdfs:label": "has CO2e emissions",
                "schema:domainIncludes": {
                     "@id": "fair4ml:MLModel"
@@ -167,7 +167,7 @@
           {
                "@id": "fair4ml:modelCategory",
                "@type": "rdf:Property",
-               "rdfs:comment": "Category of this ML model (e.g., Supervised, Unsupervised, Semi-supervised, Reinforcement), learning architecture (e.g., CNN), underlying algorithm (e.g., logistic regression, random forest).",
+               "rdfs:comment": "Category of this ML model (e.g., Supervised, Unsupervised, Semi-supervised, Reinforcement), learning architecture (e.g., CNN, LLM), underlying algorithm (e.g., logistic regression, random forest).",
                "rdfs:label": "model category",
                "schema:domainIncludes": {
                     "@id": "fair4ml:MLModel"
@@ -180,7 +180,7 @@
                }] 
           },
           {
-               "@id": "fair4ml:modelRisks",
+               "@id": "fair4ml:modelRisksBiasLimitations",
                "@type": "rdf:Property",
                "rdfs:comment": "Description of the risks and biases of the model, in a human-readable manner.",
                "rdfs:label": "model risks",
