@@ -6,7 +6,7 @@
           "schema":"http://schema.org/",
           "codemeta": "https://w3id.org/codemeta/",
           "fair4ml": "https://w3id.org/fair4ml/",
-          "cr": "http://mlcommons.org/croissant/1.0",
+          "cr": "http://mlcommons.org/croissant/1.0/",
           "CreativeWork":  {"@id": "schema:CreativeWork"},
           "MediaObject":  {"@id": "schema:MediaObject"},
           "ScholarlyArticle":  {"@id": "schema:ScholarlyArticle"},
@@ -62,6 +62,13 @@
                },
                "license": {
                     "@id": "https://creativecommons.org/publicdomain/zero/1.0/"
+               },
+               "owl:versionIRI": {
+                    "@id": "https://w3id.org/fair4ml/0.0.1"
+               },
+               "schema:releaseDate": "2024-06-04",
+               "schema:codeRepository": {
+                    "@id": "https://github.com/RDA-FAIR4ML/FAIR4ML-schema"
                }
           },
           {
@@ -115,7 +122,7 @@
           {
                "@id": "fair4ml:hasCO2eEmissions",
                "@type": "rdf:Property",
-               "rdfs:comment": "Amount of CO2 equivalent emissions produced by training the model. The unit should be included in the field (e.g., 10 tonnes).",
+               "rdfs:comment": "Amount of CO2 equivalent emissions produced by the model. The unit should be included in the field (e.g., 10 tonnes).",
                "rdfs:label": "has CO2e emissions",
                "schema:domainIncludes": {
                     "@id": "fair4ml:MLModel"
@@ -139,7 +146,7 @@
                     "@id": "schema:DefinedTerm"
                },
                {
-                    "@id": "schema:url"
+                    "@id": "schema:URL"
                }]
           },
           {
@@ -173,7 +180,7 @@
                }] 
           },
           {
-               "@id": "fair4ml:modelRisksBiasLimitations",
+               "@id": "fair4ml:modelRisks",
                "@type": "rdf:Property",
                "rdfs:comment": "Description of the risks and biases of the model, in a human-readable manner.",
                "rdfs:label": "model risks",

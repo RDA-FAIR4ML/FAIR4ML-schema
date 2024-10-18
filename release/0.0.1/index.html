@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="en">
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+    <title>
+        FAIR4ML metadata schema
+
+    </title>
+    <meta name="description" content="">
+    <!-- Styling  -->
+    <link href='https://fonts.googleapis.com/css?family=Noto+Sans' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <style>
+        .table thead th {
+            vertical-align: bottom;
+            border-bottom: 2px solid #dee2e6;
+            background-color: #467D2C52;
+            }
+    </style>
+    <!-- JavaScript  -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</head>
+
+<body>
+    <div class="container min-vh-100">
+        <main id="main" class="my-5">
+            <h1>FAIR4ML Metadata Schema</h1>
+            <h5>Release date: 2024.06.04</h5>
+            <h5>Version: 0.0.1 </h5>
+            <h5>Status: Draft (under review)</h5>
+            <h5>This version URI: <a href="https://w3id.org/fair4ml/0.0.1">https://w3id.org/fair4ml/0.0.1</a> </h5>
+            <h5>Latest version URI: <a href="https://w3id.org/fair4ml#"">https://w3id.org/fair4ml#</a> </h5>
+            <h5>Authors (in alphabetical order). The list of authors is not final! Please contribute to the discussion in <a href="https://github.com/RDA-FAIR4ML/FAIR4ML-schema" target="_blank">our GitHub repository</a> or <a href="https://docs.google.com/spreadsheets/d/1J2Q7M7p_JO0lYkQQ-QtCJyi_DNe3gR4Aqk7BynK5jj4/edit?usp=sharing">discussion spreadsheet</a></h5>
+                <ul>
+                    <li>Leyla-Jael Castro, <a href="https://www.zbmed.de/en/">ZB MED</a></li>
+                    <li>Daniel Garijo, <a href="https://www.upm.es/">Universidad Politécnica de Madrid</a></li>
+                    <li>Dietrich Rebholz-Schuhmann, <a href="https://www.zbmed.de/en/">ZB MED</a></li>
+                    <li>Dhwani Solanki, <a href="https://www.zbmed.de/en/">ZB MED</a></li>
+                    <li>Jenifer Tabita Ciuciu-Kiss, <a href="https://www.upm.es/">Universidad Politécnica de Madrid</a></li>
+                    <li><a href="https://www.rd-alliance.org/groups/fair-machine-learning-fair4ml-ig/members/all-members/">Research Data Alliance FAIR4ML Task Force</a></li>
+                </ul>
+            <h5>License: <a href="https://creativecommons.org/publicdomain/zero/1.0" target="_blank"><img src="https://img.shields.io/badge/License-https://creativecommons.org/publicdomain/zero/1.0/-blue.svg" alt="https://creativecommons.org/publicdomain/zero/1.0"></a> </h5>
+            <h5>Download: <a href="fair4ml.jsonld" target="_blank"><img src="https://img.shields.io/badge/Format-JSON_LD-blue.svg" alt="JSON-LD"></a> <a href="https://github.com/RDA-FAIR4ML/FAIR4ML-schema" target="_blank"><img src="img/github.svg" width="3%"></a> </h5>
+            <hr/>
+            <h4>Introduction</h4>
+
+            <p>
+                An increasing amount of machine learning models are produced and shared in the Web by research scientists, ML enthusiast and ML developers. In this document we introduce a <a href="http://schema.org">Schema.org</a> extension for creating machine-readable representations of trained Machine Learning models. The proposed vocabulary also reuses properties from <a href="https://w3id.org/codemeta">codemeta</a>, in order to point to the code repository associated with a model. The figure below shows a high-level overview of the main metadata fields used to describe an ML model. 
+            </p>
+            
+            <p>
+                <img src="img/MLModel schema.drawio.svg"/ width="50%" >
+            </p>
+
+            <h4>Namespaces used in this document</h4>
+            <ul>
+                <li>rdf: <a href="http://www.w3.org/1999/02/22-rdf-syntax-ns#" target="_blank" class="external" rel="noopener">http://www.w3.org/1999/02/22-rdf-syntax-ns#</a></li>
+
+                <li>rdfs: <a href="http://www.w3.org/2000/01/rdf-schema#" target="_blank" class="external" rel="noopener">http://www.w3.org/2000/01/rdf-schema</a>.</li>
+            
+                <li>owl: <a href="http://www.w3.org/2002/07/owl#" target="_blank" class="external" rel="noopener">http://www.w3.org/2002/07/owl#</a></li>
+            
+                <li>schema: <a href="http://schema.org/" target="_blank" class="external" rel="noopener">http://schema.org/</a></li>
+            
+                <li>codemeta: <a href="https://w3id.org/codemeta/" target="_blank" class="external" rel="noopener">https://w3id.org/codemeta/</a></li>
+            
+                <li>fair4ml: <a href="https://w3id.org/fair4ml/" target="_blank" class="external" rel="noopener">https://w3id.org/fair4ml/</a></li>
+            
+                <li>cr: <a href="http://mlcommons.org/croissant/1.0" target="_blank" class="external" rel="noopener">http://mlcommons.org/croissant/1.0</a></li>
+            
+            </ul>
+                
+                <div class="tab-content py-3 mb-3 border-bottom" id="nav-tabContent">
+
+                    <div class="tab-pane fade show active" id="nav-description" role="tabpanel" aria-labelledby="nav-description-tab">
+                        <h3>Extending Schema.org hierarchy</h3>
+                        This Profile extends the Schema.org hierarchy as follows:
+                        <p>
+                        <a href="http://schema.org/Thing">schema:Thing</a>
+                        &gt;
+                        <a href="http://schema.org/CreativeWork">schema:CreativeWork</a>
+                        &gt;
+                        <a href="https://github.com/RDA-FAIR4ML/FAIR4ML-schema">fair4ml:MLModel</a>
+                    </p>
+                        <hr />
+                    </div>
+                
+                <h3>fair4ml: MLModel new properties</h3>
+                <div class="table-responsive shadow rounded mt-4 mb-5">
+                    <table class="table table-hover table-borderless mb-0 spec-prof-table">
+                        <thead>
+                            <tr>
+                                <th>Property</th>
+                                <th>Expected Type</th>
+                                <th>Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        
+                            <tr>
+                                <td class="property-column"><a href="https://w3id.org/fair4ml#"></a></td>
+                                <td>
+                                    
+                                </td>
+                                <td class="description-column"></td>
+                            </tr>
+                        
+                            <tr>
+                                <td class="property-column"><a href="https://w3id.org/fair4ml#">fair4ml:ethicalLegalSocial</a></td>
+                                <td>
+                                    
+                                        <a href="http://schema.org/Text">schema:Text</a><br/>
+                                    
+                                </td>
+                                <td class="description-column">Considerations with respect to ethical, legal and social aspects.</td>
+                            </tr>
+                        
+                            <tr>
+                                <td class="property-column"><a href="https://w3id.org/fair4ml#">fair4ml:evaluatedOn</a></td>
+                                <td>
+                                    
+                                        <a href="http://schema.org/Dataset">schema:Dataset</a><br/>
+                                    
+                                        <a href="http://mlcommons.org/croissant/1.0">cr:Dataset</a><br/>
+                                    
+                                </td>
+                                <td class="description-column">Dataset used for evaluating the model. The dataset used for evaluation may not have been part of the train/test/validation (e.g., a benchmark, extrinsic validation).</td>
+                            </tr>
+                        
+                            <tr>
+                                <td class="property-column"><a href="https://w3id.org/fair4ml#">fair4ml:fineTunedFrom</a></td>
+                                <td>
+                                    
+                                        <a href="https://w3id.org/fair4ml#">fair4ml:MLModel</a><br/>
+                                    
+                                </td>
+                                <td class="description-column">Relationship to point to the source model used for fine tuning (if this model was fine-tuned from another one).</td>
+                            </tr>
+                        
+                            <tr>
+                                <td class="property-column"><a href="https://w3id.org/fair4ml#">fair4ml:hasCO2eEmissions</a></td>
+                                <td>
+                                    
+                                        <a href="http://schema.org/Text">schema:Text</a><br/>
+                                    
+                                </td>
+                                <td class="description-column">Amount of CO2 equivalent emissions produced by the model. The unit should be included in the field (e.g., 10 tonnes).</td>
+                            </tr>
+                        
+                            <tr>
+                                <td class="property-column"><a href="https://w3id.org/fair4ml#">fair4ml:intendedUse</a></td>
+                                <td>
+                                    
+                                        <a href="http://schema.org/Text">schema:Text</a><br/>
+                                    
+                                        <a href="http://schema.org/DefinedTerm">schema:DefinedTerm</a><br/>
+                                    
+                                        <a href="http://schema.org/URL">schema:URL</a><br/>
+                                    
+                                </td>
+                                <td class="description-column">Purpose and intended use stated to enable users to make a decision as to the suitability of this creative work (e.g., lab protocol, machine learning model, software) to their experimental problem or own use case.</td>
+                            </tr>
+                        
+                            <tr>
+                                <td class="property-column"><a href="https://w3id.org/fair4ml#">fair4ml:mlTask</a></td>
+                                <td>
+                                    
+                                        <a href="http://schema.org/Text">schema:Text</a><br/>
+                                    
+                                        <a href="http://schema.org/DefinedTerm">schema:DefinedTerm</a><br/>
+                                    
+                                </td>
+                                <td class="description-column">ML task addressed by this ML software or model (e.g., binary classification).</td>
+                            </tr>
+                        
+                            <tr>
+                                <td class="property-column"><a href="https://w3id.org/fair4ml#">fair4ml:modelCategory</a></td>
+                                <td>
+                                    
+                                        <a href="http://schema.org/Text">schema:Text</a><br/>
+                                    
+                                        <a href="http://schema.org/DefinedTerm">schema:DefinedTerm</a><br/>
+                                    
+                                </td>
+                                <td class="description-column">Category of this ML model (e.g., Supervised, Unsupervised, Semi-supervised, Reinforcement), learning architecture (e.g., CNN), underlying algorithm (e.g., logistic regression, random forest).</td>
+                            </tr>
+                        
+                            <tr>
+                                <td class="property-column"><a href="https://w3id.org/fair4ml#">fair4ml:modelRisks</a></td>
+                                <td>
+                                    
+                                        <a href="http://schema.org/Text">schema:Text</a><br/>
+                                    
+                                </td>
+                                <td class="description-column">Description of the risks and biases of the model, in a human-readable manner.</td>
+                            </tr>
+                        
+                            <tr>
+                                <td class="property-column"><a href="https://w3id.org/fair4ml#">fair4ml:sharedBy</a></td>
+                                <td>
+                                    
+                                        <a href="http://schema.org/Person">schema:Person</a><br/>
+                                    
+                                        <a href="http://schema.org/Organization">schema:Organization</a><br/>
+                                    
+                                </td>
+                                <td class="description-column">Person or Organization who shared the model online (e.g., uploading it to HuggingFace).</td>
+                            </tr>
+                        
+                            <tr>
+                                <td class="property-column"><a href="https://w3id.org/fair4ml#">fair4ml:testedOn</a></td>
+                                <td>
+                                    
+                                        <a href="http://schema.org/Dataset">schema:Dataset</a><br/>
+                                    
+                                        <a href="http://mlcommons.org/croissant/1.0">cr:Dataset</a><br/>
+                                    
+                                </td>
+                                <td class="description-column">Link to the dataset used to test the model (following train/test/validation splits).</td>
+                            </tr>
+                        
+                            <tr>
+                                <td class="property-column"><a href="https://w3id.org/fair4ml#">fair4ml:trainedOn</a></td>
+                                <td>
+                                    
+                                        <a href="http://schema.org/Dataset">schema:Dataset</a><br/>
+                                    
+                                        <a href="http://mlcommons.org/croissant/1.0">cr:Dataset</a><br/>
+                                    
+                                </td>
+                                <td class="description-column">AI-ready dataset (after pre-processing) used for the training and optimization of this ML model.</td>
+                            </tr>
+                        
+                            <tr>
+                                <td class="property-column"><a href="https://w3id.org/fair4ml#">fair4ml:usageInstructions</a></td>
+                                <td>
+                                    
+                                        <a href="http://schema.org/Text">schema:Text</a><br/>
+                                    
+                                </td>
+                                <td class="description-column">Description of the instructions needed to run the model (e.g., to do inference on a task). Code snippets may be used for illustration.</td>
+                            </tr>
+                        
+                            <tr>
+                                <td class="property-column"><a href="https://w3id.org/fair4ml#">fair4ml:validatedOn</a></td>
+                                <td>
+                                    
+                                        <a href="http://schema.org/Dataset">schema:Dataset</a><br/>
+                                    
+                                        <a href="http://mlcommons.org/croissant/1.0">cr:Dataset</a><br/>
+                                    
+                                </td>
+                                <td class="description-column">Link to the dataset used to validate the model. Typically the training dataset is a separated set from the train/testing set.</td>
+                            </tr>
+                        
+                        </tbody>
+                    </table>
+                </div>
+
+                <!--<h3>Schema.org Profiles</h3>
+                <div class="table-responsive shadow rounded mt-4 mb-5">
+                    <table class="table table-hover table-borderless mb-0 spec-prof-table">
+                        <thead>
+                            <tr>
+                                <th>Profiles</th>
+                                <th>Expected Type</th>
+                                <th>Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        
+                            <tr>
+                                <td class="property-column"><a href="http://schema.org/CreativeWork">schema:CreativeWork</a></td>
+                                <td class="property-column"><a href="http://schema.org/CreativeWork">schema:CreativeWork</a></td>
+                                <td class="description-column">The most generic kind of creative work, including books, movies, photographs, software programs, etc.</td>
+                            </tr>
+                        
+                            <tr>
+                                <td class="property-column"><a href="http://schema.org/MediaObject">schema:MediaObject</a></td>
+                                <td class="property-column"><a href="http://schema.org/MediaObject">schema:MediaObject</a></td>
+                                <td class="description-column">A media object, such as an image, video, audio, or text object embedded in a web page or a downloadable dataset i.e. DataDownload. Note that a creative work may have many media objects associated with it on the same web page. For example, a page about a single song (MusicRecording) may have a music video (VideoObject), and a high and low bandwidth audio stream (2 AudioObject's).</td>
+                            </tr>
+                        
+                            <tr>
+                                <td class="property-column"><a href="http://schema.org/ScholarlyArticle">schema:ScholarlyArticle</a></td>
+                                <td class="property-column"><a href="http://schema.org/ScholarlyArticle">schema:ScholarlyArticle</a></td>
+                                <td class="description-column">A scholarly article.</td>
+                            </tr>
+                        
+                            <tr>
+                                <td class="property-column"><a href="http://schema.org/Thing">schema:Thing</a></td>
+                                <td class="property-column"><a href="http://schema.org/Thing">schema:Thing</a></td>
+                                <td class="description-column">The most generic type of item.</td>
+                            </tr>
+                        
+                        </tbody>
+                    </table>
+                </div>-->
+
+                <h3>Schema.org inherited Properties</h3>
+                <div class="table-responsive shadow rounded mt-4 mb-5">
+                    <table class="table table-hover table-borderless mb-0 spec-prof-table">
+                        <thead>
+                            <tr>
+                                <th>Property</th>
+                                <th>Expected Type</th>
+                                <th>Description (from <a href="http://schema.org">Schema.org</a>)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        
+                            <tr>
+                                <td class="property-column"><a href="http://schema.org/archivedAt">schema:archivedAt</a></td>
+                                <td>
+                                    
+                                        <a href="http://schema.org/URL">schema:URL</a><br/>
+                                    
+                                        <a href="http://schema.org/WebPage">schema:WebPage</a><br/>
+                                    
+                                </td>
+                                <td class="description-column">Indicates a page or other link involved in archival of a <a href="http://schema.org/CreativeWork">CreativeWork</a>. In the case of <a href="http://schema.org/MediaReview">MediaReview</a>, the items in a <a href="http://schema.org/MediaReviewItem">MediaReviewItem</a> may often become inaccessible, but be archived by archival, journalistic, activist, or law enforcement organizations. In such cases, the referenced page may not directly publish the content.</td>
+                            </tr>
+                        
+                            <tr>
+                                <td class="property-column"><a href="http://schema.org/author">schema:author</a></td>
+                                <td>
+                                    
+                                        <a href="http://schema.org/Person">schema:Person</a><br/>
+                                    
+                                        <a href="http://schema.org/Organization">schema:Organization</a><br/>
+                                    
+                                </td>
+                                <td class="description-column">The author of this content or rating. Please note that author is special in that HTML 5 provides a special mechanism for indicating authorship via the rel tag. That is equivalent to this and may be used interchangeably.</td>
+                            </tr>
+                        
+                            <tr>
+                                <td class="property-column"><a href="http://schema.org/citation">schema:citation</a></td>
+                                <td>
+                                    
+                                        <a href="http://schema.org/Text">schema:Text</a><br/>
+                                    
+                                        <a href="http://schema.org/CreativeWork">schema:CreativeWork</a><br/>
+                                    
+                                </td>
+                                <td class="description-column">A citation or reference to another creative work, such as another publication, web page, scholarly article, etc.</td>
+                            </tr>
+                        
+                            <tr>
+                                <td class="property-column"><a href="http://schema.org/conditionsOfAccess">schema:conditionsOfAccess</a></td>
+                                <td>
+                                    
+                                        <a href="http://schema.org/Text">schema:Text</a><br/>
+                                    
+                                </td>
+                                <td class="description-column">Conditions that affect the availability of, or method(s) of access to, an item. Typically used for real world items such as an <a href="http://schema.org/ArchiveComponent">ArchiveComponent</a> held by an <a href="http://schema.org/ArchiveOrganization">ArchiveOrganization</a>. This property is not suitable for use as a general Web access control mechanism. It is expressed only in natural language.\n\nFor example "Available by appointment from the Reading Room" or "Accessible only from logged-in accounts ". </td>
+                            </tr>
+                        
+                            <tr>
+                                <td class="property-column"><a href="http://schema.org/contributor">schema:contributor</a></td>
+                                <td>
+                                    
+                                        <a href="http://schema.org/Organization">schema:Organization</a><br/>
+                                    
+                                        <a href="http://schema.org/Person">schema:Person</a><br/>
+                                    
+                                </td>
+                                <td class="description-column">A secondary contributor to the CreativeWork or Event.</td>
+                            </tr>
+                        
+                            <tr>
+                                <td class="property-column"><a href="http://schema.org/copyrightHolder">schema:copyrightHolder</a></td>
+                                <td>
+                                    
+                                        <a href="http://schema.org/Organization">schema:Organization</a><br/>
+                                    
+                                        <a href="http://schema.org/Person">schema:Person</a><br/>
+                                    
+                                </td>
+                                <td class="description-column">The party holding the legal copyright to the CreativeWork.</td>
+                            </tr>
+                        
+                            <tr>
+                                <td class="property-column"><a href="http://schema.org/dateCreated">schema:dateCreated</a></td>
+                                <td>
+                                    
+                                        <a href="http://schema.org/Date">schema:Date</a><br/>
+                                    
+                                        <a href="http://schema.org/DateTime">schema:DateTime</a><br/>
+                                    
+                                </td>
+                                <td class="description-column">The date on which the CreativeWork was created or the item was added to a DataFeed.</td>
+                            </tr>
+                        
+                            <tr>
+                                <td class="property-column"><a href="http://schema.org/dateModified">schema:dateModified</a></td>
+                                <td>
+                                    
+                                        <a href="http://schema.org/Date">schema:Date</a><br/>
+                                    
+                                        <a href="http://schema.org/DateTime">schema:DateTime</a><br/>
+                                    
+                                </td>
+                                <td class="description-column">The date on which the CreativeWork was most recently modified or when the item's entry was modified within a DataFeed.</td>
+                            </tr>
+                        
+                            <tr>
+                                <td class="property-column"><a href="http://schema.org/datePublished">schema:datePublished</a></td>
+                                <td>
+                                    
+                                        <a href="http://schema.org/Date">schema:Date</a><br/>
+                                    
+                                        <a href="http://schema.org/DateTime">schema:DateTime</a><br/>
+                                    
+                                </td>
+                                <td class="description-column">Date of first publication or broadcast. For example the date a  <a href="http://schema.org/CreativeWork">CreativeWork</a>  was broadcast or a  <a href="http://schema.org/Certification">Certification</a> was issued.</td>
+                            </tr>
+                        
+                            <tr>
+                                <td class="property-column"><a href="http://schema.org/description">schema:description</a></td>
+                                <td>
+                                    
+                                        <a href="http://schema.org/TextObject">schema:TextObject</a><br/>
+                                    
+                                        <a href="http://schema.org/Text">schema:Text</a><br/>
+                                    
+                                </td>
+                                <td class="description-column">A description of the item.</td>
+                            </tr>
+                        
+                            <tr>
+                                <td class="property-column"><a href="http://schema.org/discussionUrl">schema:discussionUrl</a></td>
+                                <td>
+                                    
+                                        <a href="http://schema.org/URL">schema:URL</a><br/>
+                                    
+                                </td>
+                                <td class="description-column">A link to the page containing the comments of the CreativeWork.</td>
+                            </tr>
+                        
+                            <tr>
+                                <td class="property-column"><a href="http://schema.org/distribution">schema:distribution</a></td>
+                                <td>
+                                    
+                                        <a href="http://schema.org/DataDownload">schema:DataDownload</a><br/>
+                                    
+                                </td>
+                                <td class="description-column">A downloadable form of this dataset, at a specific location, in a specific format. This property can be repeated if different variations are available. There is no expectation that different downloadable distributions must contain exactly equivalent information (see also [DCAT](https://www.w3.org/TR/vocab-dcat-3/#Class:Distribution) on this point). Different distributions might include or exclude different subsets of the entire dataset, for example.</td>
+                            </tr>
+                        
+                            <tr>
+                                <td class="property-column"><a href="http://schema.org/funding">schema:funding</a></td>
+                                <td>
+                                    
+                                        <a href="http://schema.org/Grant">schema:Grant</a><br/>
+                                    
+                                </td>
+                                <td class="description-column">A <a href="http://schema.org/Grant">Grant</a> that directly or indirectly provide funding or sponsorship for this item. See also <a href="http://schema.org/ownershipFundingInfo">ownershipFundingInfo</a>.</td>
+                            </tr>
+                        
+                            <tr>
+                                <td class="property-column"><a href="http://schema.org/identifier">schema:identifier</a></td>
+                                <td>
+                                    
+                                        <a href="http://schema.org/Text">schema:Text</a><br/>
+                                    
+                                        <a href="http://schema.org/URL">schema:URL</a><br/>
+                                    
+                                        <a href="http://schema.org/PropertyValue">schema:PropertyValue</a><br/>
+                                    
+                                </td>
+                                <td class="description-column">The identifier property represents any kind of identifier for any kind of <a href="http://schema.org/Thing">Thing</a>, such as ISBNs, GTIN codes, UUIDs etc. Schema.org provides dedicated properties for representing many of these, either as textual strings or as URL (URI) links. See <a href="http://schema.org/docs/datamodel.html#identifierBg">background notes</a> for more details.
+        </td>
+                            </tr>
+                        
+                            <tr>
+                                <td class="property-column"><a href="http://schema.org/inLanguage">schema:inLanguage</a></td>
+                                <td>
+                                    
+                                        <a href="http://schema.org/Text">schema:Text</a><br/>
+                                    
+                                        <a href="http://schema.org/Language">schema:Language</a><br/>
+                                    
+                                </td>
+                                <td class="description-column">The language of the content or performance or used in an action. Please use one of the language codes from the <a hef="http://tools.ietf.org/html/bcp47">IETF BCP 47 standard</a>. See also <a href="http://schema.org/availableLanguage">availableLanguage</a>.</td>
+                            </tr>
+                        
+                            <tr>
+                                <td class="property-column"><a href="http://schema.org/isAccessibleForFree">schema:isAccessibleForFree</a></td>
+                                <td>
+                                    
+                                        <a href="http://schema.org/Boolean">schema:Boolean</a><br/>
+                                    
+                                </td>
+                                <td class="description-column">A flag to signal that the item, event, or place is accessible for free.</td>
+                            </tr>
+                        
+                            <tr>
+                                <td class="property-column"><a href="http://schema.org/keywords">schema:keywords</a></td>
+                                <td>
+                                    
+                                        <a href="http://schema.org/Text">schema:Text</a><br/>
+                                    
+                                        <a href="http://schema.org/URL">schema:URL</a><br/>
+                                    
+                                        <a href="http://schema.org/DefinedTerm">schema:DefinedTerm</a><br/>
+                                    
+                                </td>
+                                <td class="description-column">Keywords or tags used to describe some item. Multiple textual entries in a keywords list are typically delimited by commas, or by repeating the property.</td>
+                            </tr>
+                        
+                            <tr>
+                                <td class="property-column"><a href="http://schema.org/license">schema:license</a></td>
+                                <td>
+                                    
+                                        <a href="http://schema.org/URL">schema:URL</a><br/>
+                                    
+                                        <a href="http://schema.org/CreativeWork">schema:CreativeWork</a><br/>
+                                    
+                                </td>
+                                <td class="description-column">A license document that applies to this content, typically indicated by URL.</td>
+                            </tr>
+                        
+                            <tr>
+                                <td class="property-column"><a href="http://schema.org/maintainer">schema:maintainer</a></td>
+                                <td>
+                                    
+                                        <a href="http://schema.org/Organization">schema:Organization</a><br/>
+                                    
+                                        <a href="http://schema.org/Person">schema:Person</a><br/>
+                                    
+                                </td>
+                                <td class="description-column">A maintainer of a <a href="http://schema.org/Dataset">Dataset</a>, software package (<a href="http://schema.org/SoftwareApplication">SoftwareApplication</a>), or other <a href="http://schema.org/Project">Project</a>. A maintainer is a <a href="http://schema.org/Person">Person</a> or <a href="http://schema.org/Organization">Organization</a> that manages contributions to, and/or publication of, some (typically complex) artifact. It is common for distributions of software and data to be based on "upstream" sources. When <a href="http://schema.org/maintainer">maintainer</a> is applied to a specific version of something e.g. a particular version or packaging of a <a href="http://schema.org/Dataset">Dataset</a>, it is always  possible that the upstream source has a different maintainer. The <a href="http://schema.org/isBasedOn">isBasedOn</a> property can be used to indicate such relationships between datasets to make the different maintenance roles clear. Similarly in the case of software, a package may have dedicated maintainers working on integration into software distributions such as Ubuntu, as well as upstream maintainers of the underlying work.
+      </td>
+                            </tr>
+                        
+                            <tr>
+                                <td class="property-column"><a href="http://schema.org/memoryRequirements">schema:memoryRequirements</a></td>
+                                <td>
+                                    
+                                        <a href="http://schema.org/Text">schema:Text</a><br/>
+                                    
+                                        <a href="http://schema.org/URL">schema:URL</a><br/>
+                                    
+                                </td>
+                                <td class="description-column">Minimum memory requirements.</td>
+                            </tr>
+                        
+                            <tr>
+                                <td class="property-column"><a href="http://schema.org/name">schema:name</a></td>
+                                <td>
+                                    
+                                        <a href="http://schema.org/Text">schema:Text</a><br/>
+                                    
+                                </td>
+                                <td class="description-column">The name of the item.</td>
+                            </tr>
+                        
+                            <tr>
+                                <td class="property-column"><a href="http://schema.org/operatingSystem">schema:operatingSystem</a></td>
+                                <td>
+                                    
+                                        <a href="http://schema.org/Text">schema:Text</a><br/>
+                                    
+                                </td>
+                                <td class="description-column">Operating systems supported (Windows 7, OS X 10.6, Android 1.6).</td>
+                            </tr>
+                        
+                            <tr>
+                                <td class="property-column"><a href="http://schema.org/processorRequirements">schema:processorRequirements</a></td>
+                                <td>
+                                    
+                                        <a href="http://schema.org/Text">schema:Text</a><br/>
+                                    
+                                </td>
+                                <td class="description-column">Processor architecture required to run the application (e.g. IA64).</td>
+                            </tr>
+                        
+                            <tr>
+                                <td class="property-column"><a href="http://schema.org/releaseNotes">schema:releaseNotes</a></td>
+                                <td>
+                                    
+                                        <a href="http://schema.org/Text">schema:Text</a><br/>
+                                    
+                                        <a href="http://schema.org/URL">schema:URL</a><br/>
+                                    
+                                </td>
+                                <td class="description-column">Description of what changed in this version.</td>
+                            </tr>
+                        
+                            <tr>
+                                <td class="property-column"><a href="http://schema.org/softwareHelp">schema:softwareHelp</a></td>
+                                <td>
+                                    
+                                        <a href="http://schema.org/CreativeWork">schema:CreativeWork</a><br/>
+                                    
+                                </td>
+                                <td class="description-column">Software application help.</td>
+                            </tr>
+                        
+                            <tr>
+                                <td class="property-column"><a href="http://schema.org/softwareRequirements">schema:softwareRequirements</a></td>
+                                <td>
+                                    
+                                        <a href="http://schema.org/Text">schema:Text</a><br/>
+                                    
+                                        <a href="http://schema.org/URL">schema:URL</a><br/>
+                                    
+                                </td>
+                                <td class="description-column">Component dependency requirements for application. This includes runtime environments and shared libraries that are not included in the application distribution package, but required to run the application (examples: DirectX, Java or .NET runtime).</td>
+                            </tr>
+                        
+                            <tr>
+                                <td class="property-column"><a href="http://schema.org/storageRequirements">schema:storageRequirements</a></td>
+                                <td>
+                                    
+                                        <a href="http://schema.org/Text">schema:Text</a><br/>
+                                    
+                                        <a href="http://schema.org/URL">schema:URL</a><br/>
+                                    
+                                </td>
+                                <td class="description-column">Storage requirements (free space required).</td>
+                            </tr>
+                        
+                            <tr>
+                                <td class="property-column"><a href="http://schema.org/url">schema:url</a></td>
+                                <td>
+                                    
+                                        <a href="http://schema.org/URL">schema:URL</a><br/>
+                                    
+                                </td>
+                                <td class="description-column">URL of the item.</td>
+                            </tr>
+                        
+                            <tr>
+                                <td class="property-column"><a href="http://schema.org/version">schema:version</a></td>
+                                <td>
+                                    
+                                        <a href="http://schema.org/Number">schema:Number</a><br/>
+                                    
+                                        <a href="http://schema.org/Text">schema:Text</a><br/>
+                                    
+                                </td>
+                                <td class="description-column">The version of the CreativeWork embodied by a specified resource.</td>
+                            </tr>
+                        
+                        </tbody>
+                    </table>
+                </div>
+
+                <h3>Codemeta inherited Properties</h3>
+                <div class="table-responsive shadow rounded mt-4 mb-5">
+                    <table class="table table-hover table-borderless mb-0 spec-prof-table">
+                        <thead>
+                            <tr>
+                                <th>Property</th>
+                                <th>Expected Type</th>
+                                <th>Description (from <a href="https://w3id.org/codemeta">Codemeta</a>)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        
+                            <tr>
+                                <td class="property-column"><a href="https://w3id.org/codemeta/buildInstructions">buildInstructions</a></td>
+                                <td>
+                                    
+                                        <a href="http://schema.org/URL">schema:URL</a><br/>
+                                    
+                                </td>
+                                <td class="description-column">Link to installation instructions/documentation.</td>
+                            </tr>
+                        
+                            <tr>
+                                <td class="property-column"><a href="https://w3id.org/codemeta/developmentStatus">developmentStatus</a></td>
+                                <td>
+                                    
+                                        <a href="http://schema.org/Text">schema:Text</a><br/>
+                                    
+                                </td>
+                                <td class="description-column">Description of development status, e.g. Active, inactive, suspended. See repostatus.org .</td>
+                            </tr>
+                        
+                            <tr>
+                                <td class="property-column"><a href="https://w3id.org/codemeta/issueTracker">issueTracker</a></td>
+                                <td>
+                                    
+                                        <a href="http://schema.org/URL">schema:URL</a><br/>
+                                    
+                                </td>
+                                <td class="description-column">Link to software bug reporting or issue tracking system.</td>
+                            </tr>
+                        
+                            <tr>
+                                <td class="property-column"><a href="https://w3id.org/codemeta/readme">readme</a></td>
+                                <td>
+                                    
+                                        <a href="http://schema.org/URL">schema:URL</a><br/>
+                                    
+                                </td>
+                                <td class="description-column">Link to software Readme file.</td>
+                            </tr>
+                        
+                            <tr>
+                                <td class="property-column"><a href="https://w3id.org/codemeta/referencePublication">referencePublication</a></td>
+                                <td>
+                                    
+                                        <a href="http://schema.org/ScholarlyArticle">schema:ScholarlyArticle</a><br/>
+                                    
+                                </td>
+                                <td class="description-column">An academic publication related to the software.</td>
+                            </tr>
+                        
+                        </tbody>
+                    </table>
+                </div>
+
+                <p>If you spot any errors or omissions, please file an issue in our <a
+                    href="https://github.com/RDA-FAIR4ML/FAIR4ML-schema" target="_blank">GitHub</a>.</p>
+
+            </div>
+        </main>
+    </div>
+
+    
+
+    <script src="/assets/js/clipboard.min.js"></script>
+    <script src="/assets/js/scripts.js"></script>
+</body>
+
+</html>

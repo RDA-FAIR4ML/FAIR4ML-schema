@@ -1,0 +1,264 @@
+{
+     "@context": {
+          "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+          "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+          "owl": "http://www.w3.org/2002/07/owl#",
+          "schema":"http://schema.org/",
+          "codemeta": "https://w3id.org/codemeta/",
+          "fair4ml": "https://w3id.org/fair4ml/",
+          "cr": "http://mlcommons.org/croissant/1.0/",
+          "CreativeWork":  {"@id": "schema:CreativeWork"},
+          "MediaObject":  {"@id": "schema:MediaObject"},
+          "ScholarlyArticle":  {"@id": "schema:ScholarlyArticle"},
+          "Thing":  {"@id": "schema:Thing"},
+          "archivedAt": {"@id": "schema:archivedAt"},
+          "author": {"@id": "schema:author"},
+          "citation": {"@id": "schema:citation"},
+          "conditionsOfAccess": {"@id": "schema:conditionsOfAccess"},
+          "contributor": {"@id": "schema:contributor"},
+          "copyrightHolder": {"@id": "schema:copyrightHolder"},
+          "dateCreated": {"@id": "schema:dateCreated"},
+          "dateModified": {"@id": "schema:dateModified"},
+          "datePublished": {"@id": "schema:datePublished"},
+          "description": {"@id": "schema:description"},
+          "discussionUrl": {"@id": "schema:discussionUrl"},
+          "distribution": {"@id": "schema:distribution"},
+          "funding": {"@id": "schema:funding"},
+          "identifier": {"@id": "schema:identifier"},
+          "inLanguage": {"@id": "schema:inLanguage"},
+          "isAccessibleForFree": {"@id": "schema:isAccessibleForFree"},
+          "keywords": {"@id": "schema:keywords"},
+          "license": {"@id": "schema:license"},
+          "maintainer": {"@id": "schema:maintainer"},
+          "memoryRequirements": {"@id": "schema:memoryRequirements"},
+          "name": {"@id": "schema:name"},
+          "operatingSystem": {"@id": "schema:operatingSystem"},
+          "processorRequirements": {"@id": "schema:processorRequirements"},
+          "releaseNotes": {"@id": "schema:releaseNotes"},
+          "softwareHelp": {"@id": "schema:softwareHelp"},
+          "softwareRequirements": {"@id": "schema:softwareRequirements"},
+          "storageRequirements": {"@id": "schema:storageRequirements"},
+          "url": {"@id": "schema:url"},
+          "version": {"@id": "schema:version"},
+
+          "buildInstructions": {"@id": "codemeta:buildInstructions"},
+          "developmentStatus": {"@id": "codemeta:developmentStatus"},
+          "issueTracker": {"@id": "codemeta:issueTracker"},
+          "readme": {"@id": "codemeta:readme"},
+          "referencePublication": {"@id": "codemeta:referencePublication"}
+     },
+     "@graph": [
+          {
+               "@id": "https://w3id.org/fair4ml/",
+               "name": [
+                    "FAIR4ML JSON-LD Context"
+               ],
+               "version": "0.0.1",
+               "url": {
+                    "@id": "https://w3id.org/fair4ml/0.0.1"
+               },
+               "schema:schemaVersion": {
+                    "@id": "https://raw.githubusercontent.com/schemaorg/schemaorg/main/data/releases/26.0/schemaorg-all-http.jsonld"
+               },
+               "license": {
+                    "@id": "https://creativecommons.org/publicdomain/zero/1.0/"
+               },
+               "owl:versionIRI": {
+                    "@id": "https://w3id.org/fair4ml/0.0.1"
+               },
+               "schema:releaseDate": "2024-06-04"
+          },
+          {
+               "@id": "fair4ml:MLModel",
+               "@type": "rdfs:Class",
+               "rdfs:comment": "Class to represent Machine Learning models that can be run for some task (e.g., those available in HuggingFace). A Machine Learning model may have more than one model distribution.",
+               "rdfs:label": "Executable Machine Learning Model",
+               "rdfs:subClassOf": {
+                    "@id": "schema:CreativeWork"
+               }
+          },
+          {
+               "@id": "fair4ml:ethicalLegalSocial",
+               "@type": "rdf:Property",
+               "rdfs:comment": "Considerations with respect to ethical, legal and social aspects.",
+               "rdfs:label": "ethical, legal, social",
+               "schema:domainIncludes": {
+                    "@id": "fair4ml:MLModel"
+               },
+               "schema:rangeIncludes": {
+                    "@id": "schema:Text"
+               }
+          },
+          {
+               "@id": "fair4ml:evaluatedOn",
+               "@type": "rdf:Property",
+               "rdfs:comment": "Dataset used for evaluating the model. The dataset used for evaluation may not have been part of the train/test/validation (e.g., a benchmark, extrinsic validation).",
+               "rdfs:label": "evaluated on",
+               "schema:domainIncludes": {
+                    "@id": "fair4ml:MLModel"
+               },
+               "schema:rangeIncludes": [{
+                    "@id": "schema:Dataset"
+               },
+               {
+                    "@id": "cr:Dataset"
+               }]
+          },
+          {
+               "@id": "fair4ml:fineTunedFrom",
+               "@type": "rdf:Property",
+               "rdfs:comment": "Relationship to point to the source model used for fine tuning (if this model was fine-tuned from another one).",
+               "rdfs:label": "fine-tuned from",
+               "schema:domainIncludes": {
+                    "@id": "fair4ml:MLModel"
+               },
+               "schema:rangeIncludes": {
+                    "@id": "fair4ml:MLModel"
+               }
+          },
+          {
+               "@id": "fair4ml:hasCO2eEmissions",
+               "@type": "rdf:Property",
+               "rdfs:comment": "Amount of CO2 equivalent emissions produced by training the model. The unit should be included in the field (e.g., 10 tonnes).",
+               "rdfs:label": "has CO2e emissions",
+               "schema:domainIncludes": {
+                    "@id": "fair4ml:MLModel"
+               },
+               "schema:rangeIncludes": {
+                    "@id": "schema:Text"
+               }
+          },
+          {
+               "@id": "fair4ml:intendedUse",
+               "@type": "rdf:Property",
+               "rdfs:comment": "Purpose and intended use stated to enable users to make a decision as to the suitability of this creative work (e.g., lab protocol, machine learning model, software) to their experimental problem or own use case.",
+               "rdfs:label": "intended use",
+               "schema:domainIncludes": {
+                    "@id": "fair4ml:MLModel"
+               },
+               "schema:rangeIncludes": [{
+                    "@id": "schema:Text"
+               },
+               {
+                    "@id": "schema:DefinedTerm"
+               },
+               {
+                    "@id": "schema:URL"
+               }]
+          },
+          {
+               "@id": "fair4ml:mlTask",
+               "@type": "rdf:Property",
+               "rdfs:comment": "ML task addressed by this ML software or model (e.g., binary classification).",
+               "rdfs:label": "ml task",
+               "schema:domainIncludes": {
+                    "@id": "fair4ml:MLModel"
+               },
+               "schema:rangeIncludes": [{
+                    "@id": "schema:Text"
+               },
+               {
+                    "@id": "schema:DefinedTerm"
+               }]
+          },
+          {
+               "@id": "fair4ml:modelCategory",
+               "@type": "rdf:Property",
+               "rdfs:comment": "Category of this ML model (e.g., Supervised, Unsupervised, Semi-supervised, Reinforcement), learning architecture (e.g., CNN), underlying algorithm (e.g., logistic regression, random forest).",
+               "rdfs:label": "model category",
+               "schema:domainIncludes": {
+                    "@id": "fair4ml:MLModel"
+               },
+               "schema:rangeIncludes": [{
+                    "@id": "schema:Text"
+               },
+               {
+                    "@id": "schema:DefinedTerm"
+               }] 
+          },
+          {
+               "@id": "fair4ml:modelRisksBiasLimitations",
+               "@type": "rdf:Property",
+               "rdfs:comment": "Description of the risks and biases of the model, in a human-readable manner.",
+               "rdfs:label": "model risks",
+               "schema:domainIncludes": {
+                    "@id": "fair4ml:MLModel"
+               },
+               "schema:rangeIncludes": {
+                    "@id": "schema:Text"
+               }
+          },
+          {
+               "@id": "fair4ml:sharedBy",
+               "@type": "rdf:Property",
+               "rdfs:comment": "Person or Organization who shared the model online (e.g., uploading it to HuggingFace).",
+               "rdfs:label": "shared by",
+               "schema:domainIncludes": {
+                    "@id": "fair4ml:MLModel"
+               },
+               "schema:rangeIncludes": [{
+                    "@id": "schema:Person"
+               },
+               {
+                    "@id": "schema:Organization"
+               }] 
+          },
+          {
+               "@id": "fair4ml:testedOn",
+               "@type": "rdf:Property",
+               "rdfs:comment": "Link to the dataset used to test the model (following train/test/validation splits).",
+               "rdfs:label": "tested on",
+               "schema:domainIncludes": {
+                    "@id": "fair4ml:MLModel"
+               },
+               "schema:rangeIncludes": [{
+                    "@id": "schema:Dataset"
+               },
+               {
+                    "@id": "cr:Dataset"
+               }]
+          },
+          {
+               "@id": "fair4ml:trainedOn",
+               "@type": "rdf:Property",
+               "rdfs:comment": "AI-ready dataset (after pre-processing) used for the training and optimization of this ML model.",
+               "rdfs:label": "trained on",
+               "schema:domainIncludes": {
+                    "@id": "fair4ml:MLModel"
+               },
+               "schema:rangeIncludes": [{
+                    "@id": "schema:Dataset"
+               },
+               {
+                    "@id": "cr:Dataset"
+               }]
+          },
+          {
+               "@id": "fair4ml:usageInstructions",
+               "@type": "rdf:Property",
+               "rdfs:comment": "Description of the instructions needed to run the model (e.g., to do inference on a task). Code snippets may be used for illustration.",
+               "rdfs:label": "usage instructions",
+               "schema:domainIncludes": {
+                    "@id": "fair4ml:MLModel"
+               },
+               "schema:rangeIncludes": {
+                    "@id": "schema:Text"
+               }
+          },
+          {
+               "@id": "fair4ml:validatedOn",
+               "@type": "rdf:Property",
+               "rdfs:comment": "Link to the dataset used to validate the model. Typically the training dataset is a separated set from the train/testing set.",
+               "rdfs:label": "validated on",
+               "schema:domainIncludes": {
+                    "@id": "fair4ml:MLModel"
+               },
+               "schema:rangeIncludes": [{
+                    "@id": "schema:Dataset"
+               },
+               {
+                    "@id": "cr:Dataset"
+               }]
+          }
+     ]
+}
