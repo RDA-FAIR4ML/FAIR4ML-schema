@@ -115,7 +115,7 @@
           {
                "@id": "fair4ml:hasCO2eEmissions",
                "@type": "rdf:Property",
-               "rdfs:comment": "Amount of CO2 equivalent emissions produced by the model. The unit should be included in the field (e.g., 10 tonnes).",
+               "rdfs:comment": "Amount of CO2 equivalent emissions produced by training the model. The unit should be included in the field (e.g., 10 tonnes).",
                "rdfs:label": "has CO2e emissions",
                "schema:domainIncludes": {
                     "@id": "fair4ml:MLModel"
@@ -173,7 +173,7 @@
                }] 
           },
           {
-               "@id": "fair4ml:modelRisks",
+               "@id": "fair4ml:modelRisksBiasLimitations",
                "@type": "rdf:Property",
                "rdfs:comment": "Description of the risks and biases of the model, in a human-readable manner.",
                "rdfs:label": "model risks",
