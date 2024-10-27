@@ -300,6 +300,96 @@
                     </table>
                 </div>
 
+                <h3>fair4ml: MLModelEvaluation new properties</h3>
+                <div class="table-responsive shadow rounded mt-4 mb-5">
+                    <table class="table table-hover table-borderless mb-0 spec-prof-table">
+                        <thead>
+                            <tr>
+                                <th>Property</th>
+                                <th>Expected Type</th>
+                                <th>Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            
+                                <tr>
+                                    <td class="property-column"><a href="https://w3id.org/fair4ml#hasEvaluation">fair4ml:hasEvaluation</a></td>
+                                    <td>
+                                        
+                                            <a href="https://w3id.org/fair4ml#MLModelEvaluation">fair4ml:MLModelEvaluation</a><br/>
+                                        
+                                    </td>
+                                    <td class="description-column">Relationship to point to the source model used for fine tuning (if this model was fine-tuned from another one).</td>
+                                </tr>
+                            
+                                <tr>
+                                    <td class="property-column"><a href="https://w3id.org/fair4ml#evaluatedMLModel">fair4ml:evaluatedMLModel</a></td>
+                                    <td>
+                                        
+                                            <a href="https://w3id.org/fair4ml#MLModel">fair4ml:MLModel</a><br/>
+                                        
+                                    </td>
+                                    <td class="description-column">MLModel evaluated with this evaluation. Reverse property: fair4ml:evaluatedWith.</td>
+                                </tr>
+                            
+                                <tr>
+                                    <td class="property-column"><a href="https://w3id.org/fair4ml#evaluationDataset">fair4ml:evaluationDataset</a></td>
+                                    <td>
+                                        
+                                            <a href="http://mlcommons.org/croissant/1.0">cr:Dataset</a><br/>
+                                        
+                                    </td>
+                                    <td class="description-column">Dataset used for the evaluation.</td>
+                                </tr>
+                            
+                                <tr>
+                                    <td class="property-column"><a href="https://w3id.org/fair4ml#evaluationMetrics">fair4ml:evaluationMetrics</a></td>
+                                    <td>
+                                        
+                                            <a href="http://schema.org/Text">schema:Text</a><br/>
+                                        
+                                            <a href="http://schema.org/PropertyValue">schema:PropertyValue</a><br/>
+                                        
+                                    </td>
+                                    <td class="description-column">Description of the metrics used for evaluating the ML model. Example with Text:  ["Precision: 0.8", "Mean: 0.9"].  Example with PropertyValue:  [{minValue: 0.0, maxValue: 1.0, value: 0.8, measurementTechnique: "Precision"} ...]</td>
+                                </tr>
+                            
+                                <tr>
+                                    <td class="property-column"><a href="https://w3id.org/fair4ml#evaluationResults">fair4ml:evaluationResults</a></td>
+                                    <td>
+                                        
+                                            <a href="http://schema.org/Text">schema:Text</a><br/>
+                                        
+                                    </td>
+                                    <td class="description-column">Summary of the results from the evaluation.</td>
+                                </tr>
+                            
+                                <tr>
+                                    <td class="property-column"><a href="https://w3id.org/fair4ml#evaluationSoftware">fair4ml:evaluationSoftware</a></td>
+                                    <td>
+                                        
+                                            <a href="http://schema.org/SoftwareSourceCode">schema:SoftwareSourceCode</a><br/>
+                                        
+                                            <a href="http://schema.org/SoftwareApplication">schema:SoftwareApplication</a><br/>
+                                        
+                                    </td>
+                                    <td class="description-column">Code used to performed the evaluation.</td>
+                                </tr>
+                            
+                                <tr>
+                                    <td class="property-column"><a href="https://w3id.org/fair4ml#extrinsicEvaluation">fair4ml:extrinsicEvaluation</a></td>
+                                    <td>
+                                        
+                                            <a href="http://schema.org/Boolean">schema:Boolean</a><br/>
+                                        
+                                    </td>
+                                    <td class="description-column">Indicates whether this evaluation is extrinsic, i.e., done with an existing model, outside the model training scope, and with a totally unseen dataset. It could be done by third-parties or by the authors of the model.</td>
+                                </tr>
+                            
+                        </tbody>
+                    </table>
+                </div>
+
 
                 <!-- <h3>Schema.org Profiles</h3>
                 <div class="table-responsive shadow rounded mt-4 mb-5">
