@@ -17,6 +17,13 @@
     <link href='https://fonts.googleapis.com/css?family=Noto+Sans' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <style>
+        .table thead th {
+            vertical-align: bottom;
+            border-bottom: 2px solid #dee2e6;
+            background-color: #467D2C52;
+            }
+    </style>
     <!-- JavaScript  -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
@@ -24,33 +31,56 @@
 <body>
     <div class="container min-vh-100">
         <main id="main" class="my-5">
-            <h1>FAIR4ML <u></u> Profile</h1>
-            <h3><strong>Version:</strong> 0.0.1 (2024.06.04.)</h3>
-            <h2>A convention for FAIR4ML to self-describe. </h2>
-            <br/>
-            <p>Class to represent Machine Learning models that can be run for some task (e.g., those available in HuggingFace). A Machine Learning model may have more than one model distribution.</p>
-            <br />
-            <p>If you spot any errors or omissions with this type, please file an issue in our <a
-                    href="https://github.com/RDA-FAIR4ML/FAIR4ML-schema" target="_blank">GitHub</a>.</p>
+            <h1>FAIR4ML Metadata Schema</h1>
+            <h5>Release date: {{ release_date }}</h5>
+            <h5>Version: {{ version }}</h5>
+            <h5>Status: {{ status }}</h5>
+            <h5>This version URI: <a href="{{ version_uri }}">{{ version_uri }}</a></h5>
+            <h5>Latest version URI: <a href="{{ latest_version_uri }}">{{ latest_version_uri }}</a></h5>
+            <h5>Authors (in alphabetical order). The list of authors is not final! Please contribute to the discussion in <a href="https://github.com/RDA-FAIR4ML/FAIR4ML-schema" target="_blank">our GitHub repository</a> or <a href="https://docs.google.com/spreadsheets/d/1J2Q7M7p_JO0lYkQQ-QtCJyi_DNe3gR4Aqk7BynK5jj4/edit?usp=sharing">discussion spreadsheet</a></h5>
+                <ul>
+                    {% for author in authors %}
+                        {% if author.name %}
+                            <li>{{ author.name }}, <a href="{{ author.affiliation_url }}">{{ author.affiliation }}</a></li>
+                        {% else %}
+                            <li><a href="{{ author.affiliation_url }}">{{ author.affiliation }}</a></li>
+                        {% endif %}
+                    {% endfor %}
+                </ul>
+            <h5>License: <a href="https://creativecommons.org/publicdomain/zero/1.0" target="_blank"><img src="https://img.shields.io/badge/License-https://creativecommons.org/publicdomain/zero/1.0/-blue.svg" alt="https://creativecommons.org/publicdomain/zero/1.0"></a> </h5>
+            <h5>Download: <a href="fair4ml.jsonld" target="_blank"><img src="https://img.shields.io/badge/Format-JSON_LD-blue.svg" alt="JSON-LD"></a> <a href="https://github.com/RDA-FAIR4ML/FAIR4ML-schema" target="_blank"><img src="img/github.svg" width="3%"></a> </h5>
+            <hr/>
+
+            <h4>Introduction</h4>
+            <p>
+                An increasing amount of machine learning models are produced and shared in the Web by research scientists, ML enthusiast and ML developers. In this document we introduce a <a href="http://schema.org">Schema.org</a> extension for creating machine-readable representations of trained Machine Learning models. The proposed vocabulary also reuses properties from <a href="https://w3id.org/codemeta">codemeta</a>, in order to point to the code repository associated with a model. The figure below shows a high-level overview of the main metadata fields used to describe an ML model. 
+            </p>
+            <p>
+                <img src="img/MLModel schema.drawio.svg"/ width="50%" >
+            </p>
+
+            <h4>Namespaces used in this document</h4>
+            <ul>
+                {% for namespace in namespaces %}
+                    <li>{{ namespace.prefix }}: <a href="{{ namespace.url }}" target="_blank" class="external" rel="noopener">{{ namespace.url }}</a></li>
+                {% endfor %}
+            </ul>
+
             <div class="tab-content py-3 mb-3 border-bottom" id="nav-tabContent">
 
                 <div class="tab-pane fade show active" id="nav-description" role="tabpanel" aria-labelledby="nav-description-tab">
-                    <h3>Description</h3>
-                    <p>{{ description }}</p>
-                    <h3>Schema.org hierarchy</h3>
-                    This Profile fits into the schema.org hierarchy as follows:
-                    <br />
-                    <br />
-                    <hr />
-                    <a href="http://schema.org/Thing">Thing</a>
-                    &gt;
-                    <a href="http://schema.org/CreativeWork">CreativeWork</a>
-                    &gt;
-                    <a href="https://github.com/RDA-FAIR4ML/FAIR4ML-schema">MLModel</a>
+                    <h3>Extending Schema.org hierarchy</h3>
+                    <p>This Profile extends the Schema.org hierarchy as follows:</p>
+                    <p>
+                        {% for item in schema_hierarchy %}
+                            <a href="{{ item.url }}">{{ item.name }}</a>
+                            {% if not loop.last %}&gt;{% endif %}
+                        {% endfor %}
+                    </p>
                     <hr />
                 </div>
                 
-                <h3>FAIR4ML Profiles</h3>
+                <h3>fair4ml: MLModel new properties</h3>
                 <div class="table-responsive shadow rounded mt-4 mb-5">
                     <table class="table table-hover table-borderless mb-0 spec-prof-table">
                         <thead>
@@ -61,22 +91,49 @@
                             </tr>
                         </thead>
                         <tbody>
-                        {% for property in fair4ml_properties %}
-                            <tr>
-                                <td class="property-column"><a href="{{ property.property_url }}">{{ property.property }}</a></td>
-                                <td>
-                                    {% for type, url in property.expected_type_and_urls %}
-                                        <a href="{{ url }}">{{ type }}</a><br/>
-                                    {% endfor %}
-                                </td>
-                                <td class="description-column">{{ property.description }}</td>
-                            </tr>
-                        {% endfor %}
+                            {% for property in fair4ml_mlmodel_properties %}
+                                <tr>
+                                    <td class="property-column"><a href="{{ property.property_url }}">{{ property.property }}</a></td>
+                                    <td>
+                                        {% for type, url in property.expected_type_and_urls %}
+                                            <a href="{{ url }}">{{ type }}</a><br/>
+                                        {% endfor %}
+                                    </td>
+                                    <td class="description-column">{{ property.description }}</td>
+                                </tr>
+                            {% endfor %}
                         </tbody>
                     </table>
                 </div>
 
-                <h3>Schema.org Profiles</h3>
+                <h3>fair4ml: MLModelEvaluation new properties</h3>
+                <div class="table-responsive shadow rounded mt-4 mb-5">
+                    <table class="table table-hover table-borderless mb-0 spec-prof-table">
+                        <thead>
+                            <tr>
+                                <th>Property</th>
+                                <th>Expected Type</th>
+                                <th>Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for property in fair4ml_mlmodelevaluation_properties %}
+                                <tr>
+                                    <td class="property-column"><a href="{{ property.property_url }}">{{ property.property }}</a></td>
+                                    <td>
+                                        {% for type, url in property.expected_type_and_urls %}
+                                            <a href="{{ url }}">{{ type }}</a><br/>
+                                        {% endfor %}
+                                    </td>
+                                    <td class="description-column">{{ property.description }}</td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+
+
+                <!-- <h3>Schema.org Profiles</h3>
                 <div class="table-responsive shadow rounded mt-4 mb-5">
                     <table class="table table-hover table-borderless mb-0 spec-prof-table">
                         <thead>
@@ -96,9 +153,9 @@
                         {% endfor %}
                         </tbody>
                     </table>
-                </div>
+                </div> -->
 
-                <h3>Schema.org Properties</h3>
+                <h3>Schema.org inherited Properties</h3>
                 <div class="table-responsive shadow rounded mt-4 mb-5">
                     <table class="table table-hover table-borderless mb-0 spec-prof-table">
                         <thead>
@@ -149,32 +206,10 @@
                         </tbody>
                     </table>
                 </div>
-
-                <h3>Namespaces</h3>
-                <p>Below are the namespaces used in this document:</p>
-                <ul>
-                {% for namespace in namespaces %}
-                    <li><a href="{{ namespace.url }}" target="_blank" class="external" rel="noopener">{{ namespace.prefix }}</a>: {{ namespace.description }}</li>
-                {% endfor %}
-                </ul>
                 
-                <hr/>
+                <p>If you spot any errors or omissions, please file an issue in our <a
+                    href="https://github.com/RDA-FAIR4ML/FAIR4ML-schema" target="_blank">GitHub</a>.</p>
 
-                <div>
-                        <h3>Contributors</h3>
-                        <p>The following people have been involved in the creation of this specification document.</p>
-
-                        <h5 class="my-4">Group Leader(s)</h5>
-                        {% for leader in group_leaders %}
-                            <div class="col mt-2">{{ leader }}</div>
-                        {% endfor %}
-
-                        <h5 class="my-4">Other team members</h5>
-                        {% for member in team_members %}
-                            <div class="col mt-2">{{ member }}</div>
-                        {% endfor %}
-                </div>
-                
 
             </div>
         </main>
