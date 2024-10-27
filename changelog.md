@@ -2,7 +2,7 @@
 
 ### 18.10.2024. - Feedback from the community:
 
-#### Propoerty:
+#### Property:
 - fair4ml:ethicalLegalSocial
     - Lars: May devlop some issues with interoperability as it gives high variation
     - Lars: migth want to split legal from social and ethical inorder to make the legal frameworks more searchable 
