@@ -6,7 +6,7 @@
           "schema":"http://schema.org/",
           "codemeta": "https://w3id.org/codemeta/",
           "fair4ml": "https://w3id.org/fair4ml/",
-          "cr": "http://mlcommons.org/croissant/1.0/",
+          "cr": "http://mlcommons.org/croissant/",
           "CreativeWork":  {"@id": "schema:CreativeWork"},
           "MediaObject":  {"@id": "schema:MediaObject"},
           "ScholarlyArticle":  {"@id": "schema:ScholarlyArticle"},
@@ -70,7 +70,46 @@
                "schema:releaseDate": "2024-16-04",
                "schema:codeRepository": {
                     "@id": "https://github.com/RDA-FAIR4ML/FAIR4ML-schema"
-               }
+               },
+               "schema:author":[
+                    {
+                         "@type": "Person",
+                         "schema:name":"Leyla-Jael Castro"
+                    },
+                    {
+                         "@type": "Person",
+                         "schema:name":"Daniel Garijo"
+                    },
+                    {
+                         "@type": "Person",
+                         "schema:name":"Dietrich Rebholz-Schuhmann"
+                    },
+                    {
+                         "@type": "Person",
+                         "schema:name":"Dhwani Solanki"
+                    },
+                    {
+                         "@type": "Person",
+                         "schema:name":"Jenifer Tabita Ciuciu-Kiss"
+                    },
+                    {
+                         "@type": "Person",
+                         "schema:name":"Dan Katz"
+                    },
+                    {
+                         "@type": "Person",
+                         "schema:name":"Lars Eklund"
+                    },
+                    {
+                         "@type": "Person",
+                         "schema:name":"Gnana Bharathy"
+                    },
+                    {
+                         "@type": "Organization",
+                         "schema:name":"Research Data Alliance FAIR4ML Task Force"
+                    }
+
+               ]
           },
           {
                "@id": "fair4ml:MLModel",
@@ -84,7 +123,7 @@
           {
                "@id": "fair4ml:MLModelEvaluation",
                "@type": "rdfs:Class",
-               "rdfs:comment": "Class to represent the evaluation of the Machine Learning model.",
+               "rdfs:comment": "Class to represent the evaluation of a Machine Learning model.",
                "rdfs:label": "Machine Learning Model Evaluation",
                "rdfs:subClassOf": {
                     "@id": "schema:CreativeWork"
@@ -122,20 +161,18 @@
                "schema:domainIncludes": {
                     "@id": "fair4ml:MLModel"
                },
-               "schema:rangeIncludes": [{
-                    "@id": "schema:Dataset"
-               },
+               "schema:rangeIncludes": 
                {
                     "@id": "cr:Dataset"
-               }]
+               }
           },
           {
                "@id": "fair4ml:hasEvaluation",
                "@type": "rdf:Property",
-               "rdfs:comment": "Relationship to point to the source model used for fine tuning (if this model was fine-tuned from another one).",
-               "rdfs:label": "evaluated with",
+               "rdfs:comment": "Relationship to point to an evaluation for the model. It may be an evaluation coming from the training process or with a totally unseen dataset used only for evaluation purposes (e.g., a benchmark, extrinsic validation).",
+               "rdfs:label": "has evaluation",
                "schema:domainIncludes": {
-                    "@id": "fair4ml:MLModelEvaluation"
+                    "@id": "fair4ml:MLModel"
                },
                "schema:rangeIncludes": {
                     "@id": "fair4ml:MLModelEvaluation"
@@ -302,12 +339,10 @@
                "schema:domainIncludes": {
                     "@id": "fair4ml:MLModel"
                },
-               "schema:rangeIncludes": [{
-                    "@id": "schema:Dataset"
-               },
+               "schema:rangeIncludes":
                {
                     "@id": "cr:Dataset"
-               }]
+               }
           },
           {
                "@id": "fair4ml:evaluatedMLModel",
@@ -341,12 +376,10 @@
                "schema:domainIncludes": {
                     "@id": "fair4ml:MLModelEvaluation"
                },
-               "schema:rangeIncludes": [{
+               "schema:rangeIncludes": {
                     "@id": "schema:Text"
-               },
-               {
-                    "@id": "schema:PropertyValue"
-               }]
+               }
+               
           },
           {
                "@id": "fair4ml:evaluationResults",
@@ -356,9 +389,12 @@
                "schema:domainIncludes": {
                     "@id": "fair4ml:MLModelEvaluation"
                },
-               "schema:rangeIncludes": {
+               "schema:rangeIncludes": [{
                     "@id": "schema:Text"
-               }
+               },
+               {
+                    "@id": "schema:PropertyValue"
+               }]
           },
           {
                "@id": "fair4ml:evaluationSoftware",
@@ -368,12 +404,9 @@
                "schema:domainIncludes": {
                     "@id": "fair4ml:MLModelEvaluation"
                },
-               "schema:rangeIncludes": [{
+               "schema:rangeIncludes": {
                     "@id": "schema:SoftwareSourceCode"
-               },
-               {
-                    "@id": "schema:SoftwareApplication"
-               }]
+               }
           },
           {
                "@id": "fair4ml:extrinsicEvaluation",
