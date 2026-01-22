@@ -5,7 +5,7 @@
           "owl": "http://www.w3.org/2002/07/owl#",
           "schema":"http://schema.org/",
           "codemeta": "https://w3id.org/codemeta/",
-          "fair4ml": "https://w3id.org/fair4ml/",
+          "fair4ml": "https://w3id.org/fair4ml#",
           "cr": "http://mlcommons.org/croissant/",
           "CreativeWork":  {"@id": "schema:CreativeWork"},
           "MediaObject":  {"@id": "schema:MediaObject"},
