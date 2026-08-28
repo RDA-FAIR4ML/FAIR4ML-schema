@@ -168,6 +168,16 @@
                                     </td>
                                     <td class="description-column">Amount of CO2 equivalent emissions produced by training the model. The unit should be included in the field (e.g., 10 tonnes).</td>
                                 </tr>
+
+                                <tr>
+                                    <td class="property-column"><a href="https://w3id.org/fair4ml#hasEvaluation">fair4ml:hasEvaluation</a></td>
+                                    <td>
+                                        
+                                            <a href="https://w3id.org/fair4ml#MLModelEvaluation">fair4ml:MLModelEvaluation</a><br/>
+                                        
+                                    </td>
+                                    <td class="description-column">Relationship to point to an evaluation for the model. It may be an evaluation coming from the training process or with a totally unseen dataset used only for evaluation purposes (e.g., a benchmark, extrinsic validation).</td>
+                                </tr>
                             
                                 <tr>
                                     <td class="property-column"><a href="https://w3id.org/fair4ml#intendedUse">fair4ml:intendedUse</a></td>
@@ -762,16 +772,7 @@
                         </thead>
                         <tbody>
                             
-                                <tr>
-                                    <td class="property-column"><a href="https://w3id.org/fair4ml#hasEvaluation">fair4ml:hasEvaluation</a></td>
-                                    <td>
-                                        
-                                            <a href="https://w3id.org/fair4ml#MLModelEvaluation">fair4ml:MLModelEvaluation</a><br/>
-                                        
-                                    </td>
-                                    <td class="description-column">Relationship to point to the source model used for fine tuning (if this model was fine-tuned from another one).</td>
-                                </tr>
-                            
+                                                           
                                 <tr>
                                     <td class="property-column"><a href="https://w3id.org/fair4ml#evaluatedMLModel">fair4ml:evaluatedMLModel</a></td>
                                     <td>
