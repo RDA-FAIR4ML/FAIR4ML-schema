@@ -32,6 +32,7 @@
     <div class="container min-vh-100">
         <main id="main" class="my-5">
             <h1>FAIR4ML Metadata Schema</h1>
+            <img src="img/logo.png" alt="drawing" style="width:100px;">
             <h5>Release date: {{ release_date }}</h5>
             <h5>Version: {{ version }}</h5>
             <h5>Status: {{ status }}</h5>
@@ -47,7 +48,7 @@
                         {% endif %}
                     {% endfor %}
                 </ul>
-            <h5>License: <a href="https://creativecommons.org/publicdomain/zero/1.0" target="_blank"><img src="https://img.shields.io/badge/License-https://creativecommons.org/publicdomain/zero/1.0/-blue.svg" alt="https://creativecommons.org/publicdomain/zero/1.0"></a> </h5>
+            <h5>License: <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank"><img src="https://img.shields.io/badge/License-CC_by_sa-blue.svg" alt="https://creativecommons.org/licenses/by-sa/4.0/"></a> </h5>
             <h5>Download: <a href="fair4ml.jsonld" target="_blank"><img src="https://img.shields.io/badge/Format-JSON_LD-blue.svg" alt="JSON-LD"></a> <a href="https://github.com/RDA-FAIR4ML/FAIR4ML-schema" target="_blank"><img src="img/github.svg" width="3%"></a> </h5>
             <hr/>
 
@@ -71,150 +72,132 @@
                 <div class="tab-pane fade show active" id="nav-description" role="tabpanel" aria-labelledby="nav-description-tab">
                     <h3>Extending Schema.org hierarchy</h3>
                     <p>This Profile extends the Schema.org hierarchy as follows:</p>
-                    <p>
-                        {% for item in schema_hierarchy %}
-                            <a href="{{ item.url }}">{{ item.name }}</a>
+                    <ul>
+                        {% for item in schema_info %}
+                            <!--list of new classes and hierarchy-->
+                            <li>
+                                {% for hierarchy in item.hierarchy %}
+                                    <a href="{{ hierarchy.url }}">{{ hierarchy.name }}</a>
+                                    {% if not loop.last %}&gt;{% endif %}
+                                {% endfor %}
+                            </li>
+                        {% endfor %}
+                    </ul>  
+                    <hr />
+
+                    <!--START every type-->
+                    {% for item in schema_info %}
+                        <!--list of elements in each new class-->
+                        <h3 id="{{ item.id }}">Class {{ item.type }}</h3>
+                        {% for hierarchy in item.hierarchy %}
+                            <a href="{{ hierarchy.url }}">{{ hierarchy.name }}</a>
                             {% if not loop.last %}&gt;{% endif %}
                         {% endfor %}
-                    </p>
-                    <hr />
-                </div>
-                
-                <h3>fair4ml: MLModel new properties</h3>
-                <div class="table-responsive shadow rounded mt-4 mb-5">
-                    <table class="table table-hover table-borderless mb-0 spec-prof-table">
-                        <thead>
-                            <tr>
-                                <th>Property</th>
-                                <th>Expected Type</th>
-                                <th>Description</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {% for property in fair4ml_mlmodel_properties %}
-                                <tr>
-                                    <td class="property-column"><a href="{{ property.property_url }}">{{ property.property }}</a></td>
-                                    <td>
-                                        {% for type, url in property.expected_type_and_urls %}
-                                            <a href="{{ url }}">{{ type }}</a><br/>
-                                        {% endfor %}
-                                    </td>
-                                    <td class="description-column">{{ property.description }}</td>
-                                </tr>
-                            {% endfor %}
-                        </tbody>
-                    </table>
-                </div>
 
-                <h3>fair4ml: MLModelEvaluation new properties</h3>
-                <div class="table-responsive shadow rounded mt-4 mb-5">
-                    <table class="table table-hover table-borderless mb-0 spec-prof-table">
-                        <thead>
-                            <tr>
-                                <th>Property</th>
-                                <th>Expected Type</th>
-                                <th>Description</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {% for property in fair4ml_mlmodelevaluation_properties %}
-                                <tr>
-                                    <td class="property-column"><a href="{{ property.property_url }}">{{ property.property }}</a></td>
-                                    <td>
-                                        {% for type, url in property.expected_type_and_urls %}
-                                            <a href="{{ url }}">{{ type }}</a><br/>
-                                        {% endfor %}
-                                    </td>
-                                    <td class="description-column">{{ property.description }}</td>
-                                </tr>
-                            {% endfor %}
-                        </tbody>
-                    </table>
-                </div>
-
-
-                <!-- <h3>Schema.org Profiles</h3>
-                <div class="table-responsive shadow rounded mt-4 mb-5">
-                    <table class="table table-hover table-borderless mb-0 spec-prof-table">
-                        <thead>
-                            <tr>
-                                <th>Profiles</th>
-                                <th>Expected Type</th>
-                                <th>Description</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                        {% for profile in schema_profiles %}
-                            <tr>
-                                <td class="property-column"><a href="{{ profile.profile_url }}">{{ profile.profile }}</a></td>
-                                <td class="property-column"><a href="{{ profile.profile_url }}">{{ profile.profile }}</a></td>
-                                <td class="description-column">{{ profile.description }}</td>
-                            </tr>
-                        {% endfor %}
-                        </tbody>
-                    </table>
-                </div> -->
-
-                <h3>Schema.org inherited Properties</h3>
-                <div class="table-responsive shadow rounded mt-4 mb-5">
-                    <table class="table table-hover table-borderless mb-0 spec-prof-table">
-                        <thead>
-                            <tr>
-                                <th>Property</th>
-                                <th>Expected Type</th>
-                                <th>Description</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                        {% for property in schema_properties %}
-                            <tr>
-                                <td class="property-column"><a href="{{ property.property_url }}">{{ property.property }}</a></td>
-                                <td>
-                                    {% for type, url in property.expected_type_and_urls %}
-                                        <a href="{{ url }}">{{ type }}</a><br/>
+                        <!--First new properties-->
+                        <h4>{{ item.type }} new properties</h4>                            
+                        <div class="table-responsive shadow rounded mt-4 mb-5">
+                            <table class="table table-hover table-borderless mb-0 spec-prof-table">
+                                <thead>
+                                    <tr>
+                                        <th>Property</th>
+                                        <th>Expected Type</th>
+                                        <th>Description</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for property in item.new_properties %}
+                                        <tr>
+                                            <td class="property-column"><a href="{{ property.property_url }}">{{ property.property }}</a></td>
+                                            <td>
+                                                {% for type, url in property.expected_type_and_urls %}
+                                                    <a href="{{ url }}">{{ type }}</a><br/>
+                                                {% endfor %}
+                                            </td>
+                                            <td class="description-column">{{ property.description }}</td>
+                                        </tr>
                                     {% endfor %}
-                                </td>
-                                <td class="description-column">{{ property.description }}</td>
-                            </tr>
-                        {% endfor %}
-                        </tbody>
-                    </table>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <!--Second schema.org properties-->
+                        <h4>{{ item.type }} properties inherited from Schema.org</h4> 
+                        <div class="table-responsive shadow rounded mt-4 mb-5">
+                            <table class="table table-hover table-borderless mb-0 spec-prof-table">
+                                <thead>
+                                    <tr>
+                                        <th>Property</th>
+                                        <th>Expected Type</th>
+                                        <th>Description</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                {% for prop_name in item.schema_reuse %}  
+                                    {% set property = schema_properties.get(prop_name) %}  
+                                    {% if property %}
+                                        <tr>
+                                            <td class="property-column"><a href="{{ property.property_url }}">{{ property.property }}</a></td>
+                                            <td>
+                                                {% for type, url in property.expected_type_and_urls %}
+                                                    <a href="{{ url }}">{{ type }}</a><br/>
+                                                {% endfor %}
+                                            </td>
+                                            <td class="description-column">{{ property.description }}</td>
+                                        </tr>
+                                    {% endif %}
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <!--Third CodeMeta properties-->
+                        <h4>{{ item.type }} properties inherited from CodeMeta</h4> 
+                        <div class="table-responsive shadow rounded mt-4 mb-5">
+                            <table class="table table-hover table-borderless mb-0 spec-prof-table">
+                                <thead>
+                                    <tr>
+                                        <th>Property</th>
+                                        <th>Expected Type</th>
+                                        <th>Description</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                {% for prop_name in item.codemeta_reuse %}  
+                                    {% set property = codemeta_properties.get(prop_name) %}  
+                                    {% if property %}
+                                        <tr>
+                                            <td class="property-column"><a href="{{ property.property_url }}">{{ property.property }}</a></td>
+                                            <td>
+                                                {% for type, url in property.expected_type_and_urls %}
+                                                    <a href="{{ url }}">{{ type }}</a><br/>
+                                                {% endfor %}
+                                            </td>
+                                            <td class="description-column">{{ property.description }}</td>
+                                        </tr>
+                                    {% endif %}
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+
+            
+                    
+                    {% endfor %}
+                    <!--END every type-->
+                    
                 </div>
 
-                <h3>Codemeta Properties</h3>
-                <div class="table-responsive shadow rounded mt-4 mb-5">
-                    <table class="table table-hover table-borderless mb-0 spec-prof-table">
-                        <thead>
-                            <tr>
-                                <th>Property</th>
-                                <th>Expected Type</th>
-                                <th>Description</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                        {% for property in codemeta_properties %}
-                            <tr>
-                                <td class="property-column"><a href="{{ property.property_url }}">{{ property.property }}</a></td>
-                                <td>
-                                    {% for type, url in property.expected_type_and_urls %}
-                                        <a href="{{ url }}">{{ type }}</a><br/>
-                                    {% endfor %}
-                                </td>
-                                <td class="description-column">{{ property.description }}</td>
-                            </tr>
-                        {% endfor %}
-                        </tbody>
-                    </table>
-                </div>
+                <p>To see a summary of the changes between this version and the previous one see the following
+                    <a href="./changelog.md">changelog</a> </p>
                 
                 <p>If you spot any errors or omissions, please file an issue in our <a
                     href="https://github.com/RDA-FAIR4ML/FAIR4ML-schema" target="_blank">GitHub</a>.</p>
+            
+            </div>   
 
-
-            </div>
         </main>
     </div>
-
     <script src="/assets/js/clipboard.min.js"></script>
     <script src="/assets/js/scripts.js"></script>
 </body>

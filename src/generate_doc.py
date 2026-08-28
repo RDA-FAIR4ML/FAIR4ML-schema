@@ -11,6 +11,7 @@ from static import (
     version_uri,
     latest_version_uri,
     namespaces,
+    schema_info,
     schema_hierarchy,
     url_mapping
 )
@@ -148,30 +149,37 @@ for item in data.get('@graph', []):
             fair4ml_mlmodelevaluation_properties.append(formatted_property)
 
 # Extract schema.org and codemeta properties
-schema_properties = []
-codemeta_properties = []
+schema_properties = {}
+codemeta_properties = {}
 for property, val in data['@context'].items():
     if not isinstance(val, str):
         property_name = val['@id'].split(':')[-1]
         if property_name[0].islower():
             if 'schema' in val['@id'].split(':')[0]:
                 item = get_item_by_id(schemaorg_data['@graph'], val['@id'])
-                schema_properties.append(format_property(item, schemaorg_data, codemeta_data))
+                #schema_properties.append(format_property(item, schemaorg_data, codemeta_data))
+                temp_prop = format_property(item, schemaorg_data, codemeta_data)
+                schema_properties[temp_prop['property']] = temp_prop
             else:
                 codemeta_property_info = codemeta_properties_data[property_name]
                 property_json = {
-                    'property': property_name,
+                    'property': 'codemeta:' + property_name,
                     'property_url': "https://w3id.org/codemeta/"+property_name,
                     'expected_type_and_urls': list(zip([codemeta_property_info['type']], "http://schema.org/"+codemeta_property_info['type'])),
                     'description': linkify_description(codemeta_property_info["desc"])
                 }
-                codemeta_properties.append(property_json)
+                #codemeta_properties.append(property_json)
+                codemeta_properties['codemeta:' + property_name] = property_json
+
+schema_info[0]['new_properties'] = fair4ml_mlmodel_properties
+schema_info[1]['new_properties'] = fair4ml_mlmodelevaluation_properties
 
 context = {
     'description': context_desciption,
     'fair4ml_mlmodel_properties': fair4ml_mlmodel_properties,
     'fair4ml_mlmodelevaluation_properties': fair4ml_mlmodelevaluation_properties,
     'schema_hierarchy': schema_hierarchy,
+    'schema_info': schema_info,
     'schema_properties': schema_properties,
     'codemeta_properties': codemeta_properties,
     'namespaces': namespaces,
