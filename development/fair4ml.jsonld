@@ -348,7 +348,7 @@
           {
                "@id": "fair4ml:evaluatedMLModel",
                "@type": "rdf:Property",
-               "rdfs:comment": "MLModel evaluated with this evaluation. Reverse property: fair4ml:hasEvaluation.",
+               "rdfs:comment": "MLModel evaluated with this evaluation. Inverse property: fair4ml:hasEvaluation.",
                "rdfs:label": "evaluated machine learning model",
                "schema:domainIncludes": {
                     "@id": "fair4ml:MLModelEvaluation"
