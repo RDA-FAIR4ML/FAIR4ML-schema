@@ -171,6 +171,7 @@ for property, val in data['@context'].items():
                 #codemeta_properties.append(property_json)
                 codemeta_properties['codemeta:' + property_name] = property_json
 
+# Hard-coded indices shuould be fixed
 schema_info[0]['new_properties'] = fair4ml_mlmodel_properties
 schema_info[1]['new_properties'] = fair4ml_mlmodelevaluation_properties
 
