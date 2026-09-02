@@ -62,7 +62,7 @@
                     "@id": "https://raw.githubusercontent.com/schemaorg/schemaorg/main/data/releases/26.0/schemaorg-all-http.jsonld"
                },
                "license": {
-                    "@id": "https://creativecommons.org/publicdomain/zero/1.0/"
+                    "@id": "https://creativecommons.org/licenses/by-sa/4.0/"
                },
                "owl:versionIRI": {
                     "@id": "https://w3id.org/fair4ml/0.1.0"
