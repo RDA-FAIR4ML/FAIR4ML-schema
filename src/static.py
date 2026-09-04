@@ -4,11 +4,14 @@ status = "Draft (under review)"
 version_uri = "https://w3id.org/fair4ml/0.0.1"
 latest_version_uri = "https://w3id.org/fair4ml#"
 authors = [
-    {"name": "Leyla-Jael Castro", "affiliation": "ZB MED", "affiliation_url": "https://www.zbmed.de/en/"},
-    {"name": "Daniel Garijo", "affiliation": "Universidad Politécnica de Madrid", "affiliation_url": "https://www.upm.es/"},
-    {"name": "Dietrich Rebholz-Schuhmann", "affiliation": "ZB MED", "affiliation_url": "https://www.zbmed.de/en/"},
-    {"name": "Dhwani Solanki", "affiliation": "ZB MED", "affiliation_url": "https://www.zbmed.de/en/"},
+    {"name": "Leyla Jael Castro", "affiliation": "ZB MED Information Centre for Life Sciences", "affiliation_url": "https://www.zbmed.de/en/"},
+    {"name": "Daniel Garijo", "affiliation": "Universidad Politécnica de Madrid", "affiliation_url": "https://www.upm.es/"},    
+    {"name": "Gnana Bharathy", "affiliation": "Australian Research Data Commons", "affiliation_url": "https://ardc.edu.au/"},
     {"name": "Jenifer Tabita Ciuciu-Kiss", "affiliation": "Universidad Politécnica de Madrid", "affiliation_url": "https://www.upm.es/"},
+    {"name": "Lars Eklund", "affiliation": "Uppsala University", "affiliation_url": "https://www.uu.se/en/"},
+    {"name": "Daniel S. Katz", "affiliation": "University of Illinois Urbana-Champaign", "affiliation_url": "https://illinois.edu/"},
+    {"name": "Dietrich Rebholz-Schuhmann", "affiliation": "ZB MED Information Centre for Life Sciences", "affiliation_url": "https://www.zbmed.de/en/"},
+    {"name": "Dhwani Solanki", "affiliation": "ZB MED Information Centre for Life Sciences", "affiliation_url": "https://www.zbmed.de/en/"},
     {"name": "", "affiliation": "Research Data Alliance FAIR4ML Task Force", "affiliation_url": "https://www.rd-alliance.org/groups/fair-machine-learning-fair4ml-ig/members/all-members/"}
 ]
 
@@ -20,7 +23,7 @@ namespaces = [
     {"prefix": "owl", "url": "http://www.w3.org/2002/07/owl#"},
     {"prefix": "schema", "url": "http://schema.org/"},
     {"prefix": "codemeta", "url": "https://w3id.org/codemeta/"},
-    {"prefix": "fair4ml", "url": "https://w3id.org/fair4ml/"},
+    {"prefix": "fair4ml", "url": "https://w3id.org/fair4ml#"},
     {"prefix": "cr", "url": "http://mlcommons.org/croissant/1.0"}
 ]
 
@@ -28,6 +31,46 @@ schema_hierarchy = [
     {"name": "schema:Thing", "url": "http://schema.org/Thing"},
     {"name": "schema:CreativeWork", "url": "http://schema.org/CreativeWork"},
     {"name": "fair4ml:MLModel", "url": "https://github.com/RDA-FAIR4ML/FAIR4ML-schema"}
+]
+
+schema_info = [
+    {
+        "id": "MLModel",
+        "type": "fair4ml:MLModel",
+        "hierarchy": [
+            {"name": "schema:Thing", "url": "http://schema.org/Thing"},
+            {"name": "schema:CreativeWork", "url": "http://schema.org/CreativeWork"},
+            {"name": "fair4ml:MLModel", "url": "#MLModel"}
+        ],
+        "schema_reuse": [
+            "schema:archivedAt", "schema:author", "schema:citation", "schema:codeRepository", "schema:conditionsOfAccess", "schema:contributor"
+            , "schema:copyrightHolder", "schema:dateCreated", "schema:dateModified", "schema:datePublished", "schema:description"
+            , "schema:discussionUrl", "schema:distribution", "schema:funding", "schema:identifier", "schema:inLanguage"
+            , "schema:isAccessibleForFree", "schema:keywords", "schema:license", "schema:maintainer", "schema:memoryRequirements", "schema:name"
+            , "schema:operatingSystem", "schema:processorRequirements", "schema:releaseNotes", "schema:softwareHelp", "schema:softwareRequirements"
+            , "schema:storageRequirements", "schema:url", "schema:version"
+        ],
+        "codemeta_reuse": [
+            "codemeta:buildInstructions", "codemeta:developmentStatus", "codemeta:issueTracker", "codemeta:readme", "codemeta:referencePublication"
+        ]
+    },
+    {
+        "id": "MLModelEvaluation",
+        "type": "fair4ml:MLModelEvaluation",
+        "hierarchy": [
+            {"name": "schema:Thing", "url": "http://schema.org/Thing"},
+            {"name": "schema:CreativeWork", "url": "http://schema.org/CreativeWork"},
+            {"name": "fair4ml:MLModelEvaluation", "url": "#MLModelEvaluation"}
+        ],
+        "schema_reuse": [
+            "schema:author", "schema:citation", "schema:dateCreated", "schema:dateModified", "schema:datePublished", "schema:description"
+            , "schema:funding", "schema:identifier", "schema:inLanguage", "schema:keywords", "schema:license"
+            , "schema:name", "schema:url"
+        ],
+        "codemeta_reuse": [
+            "codemeta:referencePublication"
+        ]
+    }
 ]
 
 url_mapping = {

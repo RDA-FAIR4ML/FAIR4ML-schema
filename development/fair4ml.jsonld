@@ -63,7 +63,7 @@
                     "@id": "https://raw.githubusercontent.com/schemaorg/schemaorg/main/data/releases/26.0/schemaorg-all-http.jsonld"
                },
                "license": {
-                    "@id": "https://creativecommons.org/publicdomain/zero/1.0/"
+                    "@id": "https://creativecommons.org/licenses/by-sa/4.0/"
                },
                "owl:versionIRI": {
                     "@id": "https://w3id.org/fair4ml/0.1.0"
@@ -75,7 +75,7 @@
                "schema:author":[
                     {
                          "@type": "Person",
-                         "schema:name":"Leyla-Jael Castro"
+                         "schema:name":"Leyla Jael Castro"
                     },
                     {
                          "@type": "Person",
@@ -170,7 +170,7 @@
           {
                "@id": "fair4ml:hasEvaluation",
                "@type": "rdf:Property",
-               "rdfs:comment": "Relationship to point to an evaluation for the model. It may be an evaluation coming from the training process or with a totally unseen dataset used only for evaluation purposes (e.g., a benchmark, extrinsic validation).",
+               "rdfs:comment": "Relationship to point to an evaluation for the model. It may be an evaluation coming from the training process or with a totally unseen dataset used only for evaluation purposes (e.g., a benchmark, extrinsic validation). Inverse property: fair4ml:evaluatedMLModel",
                "rdfs:label": "has evaluation",
                "schema:domainIncludes": {
                     "@id": "fair4ml:MLModel"
@@ -348,7 +348,7 @@
           {
                "@id": "fair4ml:evaluatedMLModel",
                "@type": "rdf:Property",
-               "rdfs:comment": "MLModel evaluated with this evaluation. Reverse property: fair4ml:hasEvaluation.",
+               "rdfs:comment": "MLModel evaluated with this evaluation. Inverse property: fair4ml:hasEvaluation.",
                "rdfs:label": "evaluated machine learning model",
                "schema:domainIncludes": {
                     "@id": "fair4ml:MLModelEvaluation"
