@@ -23,7 +23,7 @@ namespaces = [
     {"prefix": "owl", "url": "http://www.w3.org/2002/07/owl#"},
     {"prefix": "schema", "url": "http://schema.org/"},
     {"prefix": "codemeta", "url": "https://w3id.org/codemeta/"},
-    {"prefix": "fair4ml", "url": "https://w3id.org/fair4ml/"},
+    {"prefix": "fair4ml", "url": "https://w3id.org/fair4ml#"},
     {"prefix": "cr", "url": "http://mlcommons.org/croissant/1.0"}
 ]
 
