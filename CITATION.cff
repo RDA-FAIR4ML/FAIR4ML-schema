@@ -1,0 +1,56 @@
+cff-version: 1.2.0
+message: If you use this schema, please cite it using these metadata.
+type: software
+title: FAIR4ML-schema
+abstract: FAIR4ML metadata schema for describing machine learning model metadata. A schema.org extension
+  for creating machine-readable representations of trained machine learning models, developed by the Research
+  Data Alliance FAIR4ML Interest Group.
+authors:
+- given-names: Leyla Jael
+  family-names: Castro
+  affiliation: ZB MED - Information Centre for Life Sciences
+  orcid: https://orcid.org/0000-0003-3986-0510
+- given-names: Daniel
+  family-names: Garijo
+  affiliation: Universidad Politécnica de Madrid
+  orcid: https://orcid.org/0000-0003-0454-7145
+- given-names: Dietrich
+  family-names: Rebholz-Schuhmann
+  affiliation: ZB MED - Information Centre for Life Sciences
+- given-names: Dhwani
+  family-names: Solanki
+  affiliation: ZB MED - Information Centre for Life Sciences
+- given-names: Jenifer Tabita
+  family-names: Ciuciu-Kiss
+  affiliation: Universidad Politécnica de Madrid
+  orcid: https://orcid.org/0000-0002-3170-6730
+- given-names: Dan
+  family-names: Katz
+  affiliation: University of Illinois Urbana-Champaign
+- given-names: Lars
+  family-names: Eklund
+  affiliation: Uppsala University
+- given-names: Gnana
+  family-names: Bharathy
+  affiliation: Australian Research Data Commons
+- name: Research Data Alliance FAIR4ML Task Force
+version: 0.1.0
+date-released: '2024-10-28'
+license: Apache-2.0
+repository-code: https://github.com/RDA-FAIR4ML/FAIR4ML-schema
+url: https://w3id.org/fair4ml
+identifiers:
+- type: doi
+  value: 10.5281/zenodo.14002309
+  description: The concept DOI, which always resolves to the latest version.
+- type: doi
+  value: 10.5281/zenodo.14002310
+  description: The DOI of version 0.1.0.
+keywords:
+- FAIR
+- machine learning
+- metadata
+- schema.org
+- ontology
+- model cards
+- research data management
